@@ -1,0 +1,38 @@
+<h1>Data</h1>
+
+  <table id="myTable" class="table table-hover">
+    <th>Country</th>
+    <th>Alpha Code</th>
+    <th>Calling Code</th>
+    <th>Capital</th>
+    <th>Region</th>
+    <th>Population</th>
+    <th>Numeric Code</th>
+
+
+
+  <tr *ngFor="let _data of datas$">
+    
+
+    <td>{{_data.name}}</td>
+    <td>{{_data.alpha2Code}}</td>
+    <td>{{_data.callingCodes}}</td>
+    <td>{{_data.capital}}</td>
+    <td>{{_data.region}}</td>
+    <td>{{_data.population}}</td>
+    <td>{{_data.numericCode}}</td>
+
+
+
+
+
+
+
+
+    <!-- <p>{{_data.employee_salary}}</p> -->
+
+    <!-- <td style="color:red">{{data.address.street}}</td> -->
+
+
+</tr>
+</table>
