@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WlistService } from '../../common/services/wlist.service';
 import { Worker } from '../../public/models/worker.model';
 import { isNgTemplate } from '@angular/compiler';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 
 @Component({
@@ -12,47 +14,64 @@ import { isNgTemplate } from '@angular/compiler';
 export class ShiftComponent implements OnInit {
 
   wRequired = 8;
-  _workers = this._wlistservice.getAllUsers();
-  hours:number  = 7;
-  employees : Array<Worker>
-  
+  _workers;
+  hours: number;
+  employees : Array<Worker>;
 
 
-
-
-  constructor( public _wlistservice: WlistService) { }
+  constructor( public _wlistservice: WlistService, private changeDetector: ChangeDetectorRef) { 
+    this._workers = this.shuffle(this._wlistservice.getAllUsers());
+    this.hours = 7;
+  }
 
   ngOnInit() {
-      this.shuffle(this._workers);
       this.setWorkersInShift();
-      console.log(this.employees)
   }
 
 
 
   removeHoursToWorker(){
     let h = this.hours;
-    this.employees.forEach(function callback(item){
-      item.hpw -= h;
+    this.employees.forEach(function (item){
+      if(item.hpw < h ){
+        
+        console.log(item.Name + ' ' + "no esta permitido overtime")
+     return;
+      
+      }else{
+        item.hpw -= h;
+      }
     })
 }
 
   setWorkersInShift(): Array<Worker>{
-    let workersListShuffled = []
-    workersListShuffled = this.shuffle(this._workers);
-    let workersNeeded = this.wRequired;
-    workersListShuffled.splice(workersNeeded);
-    this.employees = workersListShuffled;
-    this.removeHoursToWorker();
+    this.employees = this.selectWorkers();
+    this.removeHoursToWorker()
+    console.log(this.employees)
     return this.employees;
   }
 
+  selectWorkers(): Array<Worker>{
+    let workersNeeded = this.wRequired;
+    let hours = this.hours;
+    let _workers = [];
+    this._workers.forEach(function(item){
+      if(item.hpw < hours){
+        return;
+      }else{
+        _workers.push(item)
+        }
+    })
+    _workers.splice(workersNeeded)
+    this.shuffle(_workers)
 
-    shuffle (array) {
-      var i = 0
+    return _workers;
+  }
+  
+  shuffle (array) {
+      let i = 0
         , j = 0
         , temp = null
-    
       for (i = array.length - 1; i > 0; i -= 1) {
         j = Math.floor(Math.random() * (i + 1))
         temp = array[i]

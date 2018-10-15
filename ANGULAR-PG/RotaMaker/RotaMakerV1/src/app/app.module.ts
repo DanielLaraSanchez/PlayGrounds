@@ -9,6 +9,7 @@ import { ShiftComponent } from './public/shift/shift.component';
 import { WorkersComponent } from './public/workers/workers.component';
 
 import{WlistService } from './common/services/wlist.service';
+import { WeeklyshiftComponent } from './public/weeklyshift/weeklyshift.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import{WlistService } from './common/services/wlist.service';
     HeaderComponent,
     TableComponent,
     ShiftComponent,
-    WorkersComponent
+    WorkersComponent,
+    WeeklyshiftComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ export class WlistService  {
     {
     'id' : 1,
     'Name':'Daniel',
-    'hpw':40,
+    'hpw':16,
   },
   {
     'id': 2,
