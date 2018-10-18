@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShiftComponent } from '../shift/shift.component';
+import { WeeklyshiftComponent } from '../weeklyshift/weeklyshift.component';
+import { WlistService } from '../../common/services/wlist.service';
 
 @Component({
   selector: 'app-table',
@@ -8,21 +9,21 @@ import { ShiftComponent } from '../shift/shift.component';
 })
 export class TableComponent implements OnInit {
 
-  mondayShift: ShiftComponent;
-  tuesdayShift: ShiftComponent;
-  wedShift: ShiftComponent;
-  thursdayShift: ShiftComponent;
-  fridayShift: ShiftComponent;
-  saturdayShift: ShiftComponent;
-  sundayShift: ShiftComponent;
 
-  constructor() { }
+  shift: WeeklyshiftComponent;
+
+
+  constructor(public _wlistService: WlistService) { }
 
   ngOnInit() {
   }
 
 setMonday(){
-  this.mondayShift.setWorkersInShift();
+   return this.shift.getMondayShift()
+}
+
+getWorkers(){
+  return this._wlistService.getWorkers();
 }
   
 }

@@ -22,19 +22,19 @@ export class WeeklyshiftComponent implements OnInit {
 
 
   getMondayShift(){
-    return this.mondayShift;
+    return this.mondayShift.setWorkersInShift();
   }
 
   getTuesdayShift(){
-    return this.tuesdayShift;
+    return this.tuesdayShift.setWorkersInShift();
   }
 
   getWedShift(){
-    return this.wedShift;
+    return this.wedShift.setWorkersInShift();
   }
 
   getThursdayShift(){
-    return this.thursdayShift;
+    return this.thursdayShift.setWorkersInShift();
   }
   
 

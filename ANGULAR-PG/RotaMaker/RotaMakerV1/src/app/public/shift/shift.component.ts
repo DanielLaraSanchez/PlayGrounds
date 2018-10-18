@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WlistService } from '../../common/services/wlist.service';
 import { Worker } from '../../public/models/worker.model';
-import { isNgTemplate } from '@angular/compiler';
-import { ChangeDetectorRef } from '@angular/core';
-
+import { Shift } from '../../public/models/shift.model';
+import { ShiftsService } from '../../common/services/shifts.service';
 
 
 @Component({
@@ -17,16 +16,25 @@ export class ShiftComponent implements OnInit {
   _workers;
   hours: number;
   employees : Array<Worker>;
+  shifts: Array<Shift>;
 
 
-  constructor( public _wlistservice: WlistService, private changeDetector: ChangeDetectorRef) { 
+  constructor( public _wlistservice: WlistService, public _shiftsService: ShiftsService) { 
     this._workers = this.shuffle(this._wlistservice.getAllUsers());
     this.hours = 7;
+    this.shifts = this._shiftsService.allShifts();
   }
 
   ngOnInit() {
-      this.setWorkersInShift();
+      console.log(this.setWorkersInShift());
+      // this.removeHoursToWorker();
+      console.log(this.shifts)
+      console.log(this.totalWorkersNeeded())
+    this.setInShifts()
   }
+
+
+  
 
 
 
@@ -42,20 +50,41 @@ export class ShiftComponent implements OnInit {
         item.hpw -= h;
       }
     })
+    
 }
 
+totalWorkersNeeded(){
+  let variable = 0;
+  this.shifts.forEach(function(item){
+    variable += item.workersRequired;
+  })
+  return variable;
+}
+
+setInShifts(){
+  let empl = this._workers;
+  let variable = this.selectWorkers(this.hours, this.totalWorkersNeeded(), empl);
+  this.shifts.forEach(function(item){
+    let eachShift = item.workersRequired;
+    console.log(eachShift)
+    let workersForEachShift = variable.splice(eachShift);
+    console.log(workersForEachShift)
+  })
+}
+
+
   setWorkersInShift(): Array<Worker>{
-    this.employees = this.selectWorkers();
-    this.removeHoursToWorker()
-    console.log(this.employees)
-    return this.employees;
+    let empl = this._workers;
+   return this.selectWorkers(this.hours, this.totalWorkersNeeded(), empl);
+    // console.log(this.employees)
+    
   }
 
-  selectWorkers(): Array<Worker>{
-    let workersNeeded = this.wRequired;
-    let hours = this.hours;
+  selectWorkers(hours:number, workersNeeded: number, workersArray: Array<Worker>): Array<Worker>{
+    // let workersNeeded = this.wRequired;
+    // let hours = this.hours;
     let _workers = [];
-    this._workers.forEach(function(item){
+    workersArray.forEach(function(item){
       if(item.hpw < hours){
         return;
       }else{
@@ -64,7 +93,8 @@ export class ShiftComponent implements OnInit {
     })
     _workers.splice(workersNeeded)
     this.shuffle(_workers)
-
+    console.log(_workers)
+    
     return _workers;
   }
   
