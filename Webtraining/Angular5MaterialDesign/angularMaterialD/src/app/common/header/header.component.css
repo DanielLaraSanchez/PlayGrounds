@@ -1,0 +1,10 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.b-header {
+
+}
+
+.b-logo {
+  float: left;
+  margin: 7px 15px 0 0;
+}
