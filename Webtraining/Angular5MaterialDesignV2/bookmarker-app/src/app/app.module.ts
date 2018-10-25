@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,11 @@ import { PublicGuard } from './common/guards/public.guard';
 import { AuthGuard } from './common/guards/auth.guard';
 import { AuthentificationService } from './common/services/authentification.service';
 import {MatInputModule} from '@angular/material/input';
+import { TokenInterceptor } from './auth/interceptors/token.interceptor';
+import { BookmarksComponent } from './auth/bookmarks/bookmarks.component';
+import { BookmarksService } from './auth/bookmarks/services/bookmarks.service';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BookmarksComponent
   ],
   imports: [
     //Core
@@ -37,11 +43,17 @@ import {MatInputModule} from '@angular/material/input';
     //Material Design
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
     //Custom
 
   ],
-  providers: [PublicGuard, AuthGuard, AuthentificationService, SessionStorageService],
+  providers: [PublicGuard,
+     AuthGuard, 
+     AuthentificationService,
+      SessionStorageService,
+      BookmarksService,
+  {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true}],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }
