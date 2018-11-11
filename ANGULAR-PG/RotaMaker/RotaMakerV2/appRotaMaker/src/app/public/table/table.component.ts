@@ -13,67 +13,47 @@ export class TableComponent implements OnInit {
 
   employees;
   shifts;
+  readyToWorkArray;
+
 
   constructor(public _workersService: WorkersService, public _shiftService: ShiftsService) { 
     this.employees = this._workersService.getAllEmployees();
     this.shifts = this._shiftService.getAllShifts();
+    this.readyToWorkArray = [];
+
   }
 
   ngOnInit() {
+    // this.checkIfWorkerCanWork(45, this.readyToWorkArray)
+    this.putWorkerInShift(this.checkIfWorkerCanWork, this.employees);
     console.log(this.shifts)
-    console.log(this.employees)
-    this.removeAllWorkersThatCantDoASingleShift(this.employees, this.shifts)
-    this.test(this.employees,9)
-    console.log(this.test1(this.employees, this.shifts))
   }
 
-  removeAllWorkersThatCantDoASingleShift(arrayWorkers: Array<Employee>, arrayShifts: Array<Shift>){
-    arrayWorkers.forEach(function(item){
-      arrayShifts.forEach(function(item2){
-        if(item.hpw >= item2.hours){
-         
-          
-        }else{
-          return;
-        }
-      })
+  checkIfWorkerCanWork(shift, bagOfWorkers, arrayOfEmployees){
+    arrayOfEmployees.forEach(function(element){
+      
+      if((element.hpw > shift.hours) && (shift.workersRequired >= 1)){
+        element.hpw -= shift.hours;
+        bagOfWorkers.push(element)
+        shift.workersRequired--;
+        console.log(element, shift)
+      }else{
+        shift.fullyBooked === true
+        console.log("hello")
+      }   
     })
-}
-
-takeOnlyTheNeededEmployees(shiftWrequired, arrayInShift, worker){
-
-
-
-}
-
-public test1(arrayW, arrayS, callback){
-arrayS.forEach(function(element){
-  let hours = element.hours;
-  callback();
-})
-}
-
-test(arrayworkers, hours){
-arrayworkers.forEach(element => {
-  if(this.returnTrueFalseIfCantWork(element, hours )){
-
   }
-});
-}
 
-test2(arrayWorkers, hours, arrayShifts){
- let workers =  arrayWorkers.splice(hours);
- arrayShifts.push(workers)
-  
-}
 
-returnTrueFalseIfCantWork(worker, hours){
-if(!worker.hpw >= hours){
-  return
-}else{
-  return true;
-}
-}
+  putWorkerInShift(callback, arrayOfEmployees){
+    this.shifts.forEach(function(element){
+      if(element.fullyBooked === false){
+        callback(element, element.arrayOfWorkers, arrayOfEmployees )
+      }else{
+        return
+      }
+    })
+  }
 
 
 

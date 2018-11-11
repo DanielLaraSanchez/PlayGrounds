@@ -10,4 +10,5 @@ export class Shift{
     hours: number;
     arrayOfWorkers: Array<Employee>;
     day: string;
+    fullyBooked: boolean;
 }
