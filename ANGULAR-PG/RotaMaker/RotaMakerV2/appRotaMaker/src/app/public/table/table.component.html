@@ -1,3 +1,60 @@
-<p>
-  table works!
-</p>
+<!-- <div class="container-fluid" *ngFor="let shift of shifts">
+  <div class="row justify-content-center">
+    <div class="col-xs-3 micol">
+      {{shift.id}}
+    </div>
+    <div class="col-xs-7 col-lg-3 micol">
+      {{shift.hours}}
+    </div>
+    <div class="col-xs-3 micol">
+      {{shift.hpw}}
+    </div>
+  </div>
+  </div> -->
+  <table class="table table-bordered table-dark" >
+    <thead>
+      <tr>
+        <th scope="col">Lunes</th>
+        <th scope="col">Martes</th>
+        <th scope="col">Miercoles</th>
+        <th scope="col">Jueves</th>
+        <th scope="col">Viernes</th>
+        <th scope="col">Sabado</th>
+        <th scope="col">Domingo</th>
+  
+  
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor=" let shift of shifts">{{shift.hours}} hours
+
+          <p *ngFor="let employee of shift.arrayOfWorkers">{{employee.Name}}HPW--{{employee.hpw}}</p>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+  
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+  
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+  
+      </tr>
+  
+    </tbody>
+  </table>
