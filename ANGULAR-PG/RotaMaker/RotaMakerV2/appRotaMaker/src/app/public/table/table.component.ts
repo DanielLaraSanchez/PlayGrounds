@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.shifts2 = this._shiftService.getAllShifts2();
-    this.shifts = this.shuffle(this._shiftService.getAllShifts());
+    this.shifts = this._shiftService.getAllShifts()
     this.a = this._shiftService.getAllShifts2();
 
 
@@ -49,7 +49,7 @@ export class TableComponent implements OnInit {
     // console.log(this.shifts)
     // console.log(this.getLowestShiftHours(this.shifts))
     // console.log(this.getLowestShiftHours(this.shifts2))
-    // console.log(this.getHighestHpw(this.employees, this.getLowestShiftHours, this.shifts))
+    console.log(this.getHighestHpw(this.employees, this.getLowestShiftHours, this.shifts))
     // console.log(this.employees)
   }
 
@@ -67,7 +67,7 @@ export class TableComponent implements OnInit {
 
       }
     })
-    // console.log(element1)
+    console.log(element1)
     return element1
   }
 
@@ -89,7 +89,7 @@ export class TableComponent implements OnInit {
   getAllWithLessHoursWorked(arrayOfEmployees, getPersonThatWorkedTheLeast) {//////shuffle?
     let personThatWorkedTheLeast = getPersonThatWorkedTheLeast(arrayOfEmployees);
     let peopleThatWorkedTheLeast = arrayOfEmployees.filter(element => {
-      return element.numberOfShiftsWorked <= personThatWorkedTheLeast.numberOfShiftsWorked;
+      return element.numberOfShiftsWorked === personThatWorkedTheLeast.numberOfShiftsWorked;
     })
     // console.log("people", peopleThatWorkedTheLeast)
     return peopleThatWorkedTheLeast
@@ -192,10 +192,11 @@ export class TableComponent implements OnInit {
         //  console.log(shouldWeContinue)
 
       }if(shouldWeContinue === true){
-        // callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
+        callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
 
 
       }
+      
 
      
 
