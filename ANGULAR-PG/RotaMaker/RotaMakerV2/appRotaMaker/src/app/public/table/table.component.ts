@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.shifts2 = this._shiftService.getAllShifts2();
-    this.shifts = this.shuffle(this._shiftService.getAllShifts());
+    this.shifts = this._shiftService.getAllShifts();
     this.a = this._shiftService.getAllShifts2();
 
 
@@ -61,6 +61,7 @@ export class TableComponent implements OnInit {
 
   getLowestShiftHours(shifts) {
     let element1 = shifts[0].hours
+    console.log(shifts , "shift o shifts")
     shifts.forEach(element => {
       if ( element1 > element.hours) {
         element1 = element.hours;
@@ -73,16 +74,12 @@ export class TableComponent implements OnInit {
 
   getHighestHpw(employees, getLowestShiftHoursCB, shiftsArray) {
     let lowestShift = getLowestShiftHoursCB(shiftsArray)
-    // console.log(lowestShift, "lowestShift")
     let result = employees.reduce(function (prev, curr) {
       return (prev.hpw > curr.hpw ) ? prev : curr;
     });
-    // console.log(lowestShift, result.hpw)
     if (lowestShift <= result.hpw) {
-      // console.log(result.hpw, result.Name, "result.hpw")
       return true
     } else if (lowestShift > result.hpw) {
-      // console.log("no hay nadie con tantas horas")
       return false
     }
   }
@@ -91,34 +88,43 @@ export class TableComponent implements OnInit {
     let peopleThatWorkedTheLeast = arrayOfEmployees.filter(element => {
       return element.numberOfShiftsWorked <= personThatWorkedTheLeast.numberOfShiftsWorked;
     })
-    // console.log("people", peopleThatWorkedTheLeast)
-    return peopleThatWorkedTheLeast
+    let personWorkedLeastHours = getPersonThatWorkedTheLeast(peopleThatWorkedTheLeast)
+    let peopleWorkedLeastHours = peopleThatWorkedTheLeast.filter(element => {
+      return element.hpw === personWorkedLeastHours.hpw
+    })
+    console.log(peopleWorkedLeastHours, peopleThatWorkedTheLeast)
+    return peopleWorkedLeastHours
   }
   getPersonThatWorkedTheLeast(arrayOfWorkers) {         
-    let objectLow = {
-      id: 0,
-      numberOfShiftsWorked: 0,
-      hpw: 0,
-      name: ""
-    }
-    arrayOfWorkers.forEach(function (element) {
-      objectLow.id = element.id;
-      objectLow.numberOfShiftsWorked = element.numberOfShiftsWorked
-      objectLow.name = element.Name
-      objectLow.hpw = element.hpw
+    // let objectLow = {
+    //   id: 0,
+    //   numberOfShiftsWorked: 0,
+    //   hpw: 0,
+    //   name: ""
+    // }
+    // arrayOfWorkers.forEach(function (element) {
+    //   objectLow.id = element.id;
+    //   objectLow.numberOfShiftsWorked = element.numberOfShiftsWorked
+    //   objectLow.name = element.Name
+    //   objectLow.hpw = element.hpw
 
-      if (objectLow.hpw > element.hpw) {
-        objectLow.id = element.id;
-        objectLow.numberOfShiftsWorked = element.numberOfShiftsWorked
-        objectLow.hpw = element.hpw
+    //   if (objectLow.hpw > element.hpw) {
+    //     objectLow.id = element.id;
+    //     objectLow.numberOfShiftsWorked = element.numberOfShiftsWorked
+    //     objectLow.hpw = element.hpw
 
-        objectLow.name = element.Name
-      }
-    })
-    let worker = arrayOfWorkers.filter(element => {
-      return element.id === objectLow.id
-    })
-    return worker[0]
+    //     objectLow.name = element.Name
+    //   }
+    // })
+    let result = arrayOfWorkers.reduce(function (prev, curr) {
+      return (prev.hpw > curr.hpw ) ? prev : curr;
+    });
+    // let worker = arrayOfWorkers.filter(element => {
+    //   return element.id === objectLow.id
+    // })
+    // return worker[0]
+    console.log("Result:", result)
+    return result
   }
   shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -192,7 +198,10 @@ export class TableComponent implements OnInit {
         //  console.log(shouldWeContinue)
 
       }if(shouldWeContinue === true){
-        // callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
+        callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
+
+        callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
+        callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
 
 
       }

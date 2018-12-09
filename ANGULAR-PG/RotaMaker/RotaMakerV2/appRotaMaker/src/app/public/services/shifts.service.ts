@@ -63,7 +63,8 @@ export class ShiftsService {
       "hours": 8,
       "day": "Sunday",
       "fullyBooked": false
-    },
+    }
+    ,
     {
       "id": 8,
       "workersRequired": 4,
