@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.shifts2 = this._shiftService.getAllShifts2();
-    this.shifts = this.shuffle(this._shiftService.getAllShifts());
+    this.shifts = this._shiftService.getAllShifts();
     this.a = this._shiftService.getAllShifts2();
 
 
