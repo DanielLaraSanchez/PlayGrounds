@@ -49,7 +49,7 @@ export class TableComponent implements OnInit {
     // console.log(this.shifts)
     // console.log(this.getLowestShiftHours(this.shifts))
     // console.log(this.getLowestShiftHours(this.shifts2))
-    // console.log(this.getHighestHpw(this.employees, this.getLowestShiftHours, this.shifts))
+    console.log(this.getHighestHpw(this.employees, this.getLowestShiftHours, this.shifts))
     // console.log(this.employees)
   }
 
@@ -77,7 +77,7 @@ export class TableComponent implements OnInit {
     let result = employees.reduce(function (prev, curr) {
       return (prev.hpw > curr.hpw ) ? prev : curr;
     });
-    // console.log(lowestShift, result.hpw)
+    console.log(lowestShift, result.hpw, result.Name)
     if (lowestShift <= result.hpw) {
       // console.log(result.hpw, result.Name, "result.hpw")
       return true
@@ -183,18 +183,8 @@ export class TableComponent implements OnInit {
     shifts.forEach(function (element) {
       callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
       shouldWeContinue = getHighestHpwCB(arrayOfEmployees, getLowestShiftHoursCB, shifts)
-
-      // console.log(shouldWeContinue)
-
       if (shouldWeContinue === true) {
          callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
-
-        //  console.log(shouldWeContinue)
-
-      }if(shouldWeContinue === true){
-        // callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
-
-
       }
 
      
