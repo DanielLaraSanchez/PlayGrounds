@@ -240,171 +240,171 @@ export class ShiftsService {
       "day": "Sunday",
       "fullyBooked": false
     }
-    ,
-    {
-      "id": 29,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 7,
-      "day": "Monday",
-      "fullyBooked": false
+    // ,
+    // {
+    //   "id": 29,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 7,
+    //   "day": "Monday",
+    //   "fullyBooked": false
 
-    },
-    {
-      "id": 30,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 8,
-      "day": "Tuesday",
-      "fullyBooked": false
+    // },
+    // {
+    //   "id": 30,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 8,
+    //   "day": "Tuesday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 31,
-      "workersRequired": 7,
-      "arrayOfWorkers": [],
-      "hours": 9,
-      "day": "Wed",
-      "fullyBooked": false
+    // },   {
+    //   "id": 31,
+    //   "workersRequired": 7,
+    //   "arrayOfWorkers": [],
+    //   "hours": 9,
+    //   "day": "Wed",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 32,
-      "workersRequired": 8,
-      "arrayOfWorkers": [],
-      "hours": 12,
-      "day": "Thursday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 32,
+    //   "workersRequired": 8,
+    //   "arrayOfWorkers": [],
+    //   "hours": 12,
+    //   "day": "Thursday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 33,
-      "workersRequired": 2,
-      "arrayOfWorkers": [],
-      "hours": 10,
-      "day": "Friday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 33,
+    //   "workersRequired": 2,
+    //   "arrayOfWorkers": [],
+    //   "hours": 10,
+    //   "day": "Friday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 34,
-      "workersRequired": 9,
-      "arrayOfWorkers": [],
-      "hours": 6,
-      "day": "Saturday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 34,
+    //   "workersRequired": 9,
+    //   "arrayOfWorkers": [],
+    //   "hours": 6,
+    //   "day": "Saturday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 35,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 8,
-      "day": "Sunday",
-      "fullyBooked": false
-    },
-    {
-      "id": 36,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 7,
-      "day": "Monday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 35,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 8,
+    //   "day": "Sunday",
+    //   "fullyBooked": false
+    // },
+    // {
+    //   "id": 36,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 7,
+    //   "day": "Monday",
+    //   "fullyBooked": false
 
-    },
-    {
-      "id": 37,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 8,
-      "day": "Tuesday",
-      "fullyBooked": false
+    // },
+    // {
+    //   "id": 37,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 8,
+    //   "day": "Tuesday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 38,
-      "workersRequired": 7,
-      "arrayOfWorkers": [],
-      "hours": 9,
-      "day": "Wed",
-      "fullyBooked": false
+    // },   {
+    //   "id": 38,
+    //   "workersRequired": 7,
+    //   "arrayOfWorkers": [],
+    //   "hours": 9,
+    //   "day": "Wed",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 39,
-      "workersRequired": 8,
-      "arrayOfWorkers": [],
-      "hours": 12,
-      "day": "Thursday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 39,
+    //   "workersRequired": 8,
+    //   "arrayOfWorkers": [],
+    //   "hours": 12,
+    //   "day": "Thursday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 39,
-      "workersRequired": 2,
-      "arrayOfWorkers": [],
-      "hours": 10,
-      "day": "Friday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 39,
+    //   "workersRequired": 2,
+    //   "arrayOfWorkers": [],
+    //   "hours": 10,
+    //   "day": "Friday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 40,
-      "workersRequired": 9,
-      "arrayOfWorkers": [],
-      "hours": 6,
-      "day": "Saturday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 40,
+    //   "workersRequired": 9,
+    //   "arrayOfWorkers": [],
+    //   "hours": 6,
+    //   "day": "Saturday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 41,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 8,
-      "day": "Sunday",
-      "fullyBooked": false
-    },
-    {
-      "id": 42,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 7,
-      "day": "Monday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 41,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 8,
+    //   "day": "Sunday",
+    //   "fullyBooked": false
+    // },
+    // {
+    //   "id": 42,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 7,
+    //   "day": "Monday",
+    //   "fullyBooked": false
 
-    },
-    {
-      "id": 43,
-      "workersRequired": 4,
-      "arrayOfWorkers": [],
-      "hours": 8,
-      "day": "Tuesday",
-      "fullyBooked": false
+    // },
+    // {
+    //   "id": 43,
+    //   "workersRequired": 4,
+    //   "arrayOfWorkers": [],
+    //   "hours": 8,
+    //   "day": "Tuesday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 44,
-      "workersRequired": 7,
-      "arrayOfWorkers": [],
-      "hours": 9,
-      "day": "Wed",
-      "fullyBooked": false
+    // },   {
+    //   "id": 44,
+    //   "workersRequired": 7,
+    //   "arrayOfWorkers": [],
+    //   "hours": 9,
+    //   "day": "Wed",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 45,
-      "workersRequired": 8,
-      "arrayOfWorkers": [],
-      "hours": 12,
-      "day": "Thursday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 45,
+    //   "workersRequired": 8,
+    //   "arrayOfWorkers": [],
+    //   "hours": 12,
+    //   "day": "Thursday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 46,
-      "workersRequired": 2,
-      "arrayOfWorkers": [],
-      "hours": 10,
-      "day": "Friday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 46,
+    //   "workersRequired": 2,
+    //   "arrayOfWorkers": [],
+    //   "hours": 10,
+    //   "day": "Friday",
+    //   "fullyBooked": false
 
-    },   {
-      "id": 47,
-      "workersRequired": 9,
-      "arrayOfWorkers": [],
-      "hours": 6,
-      "day": "Saturday",
-      "fullyBooked": false
+    // },   {
+    //   "id": 47,
+    //   "workersRequired": 9,
+    //   "arrayOfWorkers": [],
+    //   "hours": 6,
+    //   "day": "Saturday",
+    //   "fullyBooked": false
 
-    }
+    // }
     
     
   ]

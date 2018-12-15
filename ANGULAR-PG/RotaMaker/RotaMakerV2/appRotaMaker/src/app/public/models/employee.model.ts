@@ -4,5 +4,6 @@ export class Employee {
     hpw: number;
     numberOfShiftsWorked: number;
     fullyBooked: boolean;
+    colleagues: Array<any>;
 
 }

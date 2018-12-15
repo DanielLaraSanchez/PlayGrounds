@@ -1,0 +1,9 @@
+.td {
+ font-size: 40px;
+ border: 1px solid  #dee2e6;
+ width: 100%;
+}
+
+.td:hover{
+    background: #dee2e6 !important;
+}

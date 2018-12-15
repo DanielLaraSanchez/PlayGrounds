@@ -20,6 +20,10 @@ export class TableComponent implements OnInit {
 
   constructor(public _workersService: WorkersService, public _shiftService: ShiftsService) {
     this.employees = this._workersService.getAllEmployees();
+    this.shifts2 = this._shiftService.getAllShifts2();
+    this.shifts = this._shiftService.getAllShifts()
+    this.a = this._shiftService.getAllShifts2();
+
 
     this.readyToWorkArray = [];
 
@@ -31,10 +35,7 @@ export class TableComponent implements OnInit {
 
 
   ngOnInit() {
-    this.shifts2 = this._shiftService.getAllShifts2();
-    this.shifts = this._shiftService.getAllShifts();
-    this.a = this._shiftService.getAllShifts2();
-
+  
 
     console.log(this.employees)
     // this.shuffle(this.employees)
@@ -42,7 +43,7 @@ export class TableComponent implements OnInit {
     //  console.log(this.putWorkerInShift(this.shifts, this.checkIfWorkerCanWork, this.employees, this.readyToWorkArray, this.getAllWithLessHoursWorked,this.getPersonThatWorkedTheLeast, this.shuffle));
     //   // this.filterUniqueId(this.employees)
     // console.log(this.shifts)
-    let array = this.putWorkerInShift(this.shifts, this.checkIfWorkerCanWork, this.employees, this.readyToWorkArray, this.getAllWithLessHoursWorked, this.getPersonThatWorkedTheLeast, this.markEmployeeFullyBooked, this.getHighestHpw, this.getLowestShiftHours, this.putWorkerInShift, this.shifts)
+    let array = this.putWorkerInShift(this.getLeftOvers ,this.shuffle, this.shifts, this.checkIfWorkerCanWork, this.employees, this.readyToWorkArray, this.getAllWithLessHoursWorked, this.getPersonThatWorkedTheLeast, this.markEmployeeFullyBooked, this.getHighestHpw, this.getLowestShiftHours, this.putWorkerInShift, this.shifts, this.varemoColleagues)
     console.log(array)
 
 
@@ -51,6 +52,7 @@ export class TableComponent implements OnInit {
     // console.log(this.getLowestShiftHours(this.shifts2))
     console.log(this.getHighestHpw(this.employees, this.getLowestShiftHours, this.shifts))
     // console.log(this.employees)
+    console.log(this.varemoColleagues(this.shifts[0], this.employees[0]))
   }
 
 
@@ -60,29 +62,42 @@ export class TableComponent implements OnInit {
 
 
   getLowestShiftHours(shifts) {
+    let counter = 0;
     let element1 = shifts[0].hours
     shifts.forEach(element => {
-      if ( element1 > element.hours) {
+      if(element.workersRequired === 0){
+        element.fullyBooked = true
+      }
+      if(element.fullyBooked === true ){
+        counter++
+      }
+      else if ( element1 > element.hours ) {
         element1 = element.hours;
 
       }
     })
-    // console.log(element1)
-    return element1
+    if(counter >= shifts.length){
+      return false
+    }
+    else{
+      return element1
+
+    }
   }
 
   getHighestHpw(employees, getLowestShiftHoursCB, shiftsArray) {
     let lowestShift = getLowestShiftHoursCB(shiftsArray)
-    // console.log(lowestShift, "lowestShift")
     let result = employees.reduce(function (prev, curr) {
       return (prev.hpw > curr.hpw ) ? prev : curr;
     });
-    console.log(lowestShift, result.hpw, result.Name)
+    if(lowestShift === false){
+      console.log("no hay nadie con tantas horas")
+      return false
+    }
     if (lowestShift <= result.hpw) {
-      // console.log(result.hpw, result.Name, "result.hpw")
       return true
     } else if (lowestShift > result.hpw) {
-      // console.log("no hay nadie con tantas horas")
+      console.log("no hay nadie con tantas horas")
       return false
     }
   }
@@ -91,7 +106,6 @@ export class TableComponent implements OnInit {
     let peopleThatWorkedTheLeast = arrayOfEmployees.filter(element => {
       return element.numberOfShiftsWorked <= personThatWorkedTheLeast.numberOfShiftsWorked;
     })
-    // console.log("people", peopleThatWorkedTheLeast)
     return peopleThatWorkedTheLeast
   }
   getPersonThatWorkedTheLeast(arrayOfWorkers) {         
@@ -142,14 +156,41 @@ export class TableComponent implements OnInit {
     })
   }
 
+varemoColleagues(shift, employee){
+  let counter = 0
+  for(let i = 0; i < shift.arrayOfWorkers.length; i ++){
+
+    if(employee.colleagues.includes(shift.arrayOfWorkers[i]) && shift.arrayOfWorkers[i].Name !== employee.Name){
+      counter++
+    }
+  }
+
+// console.log(counter, "este es el counter final")
+  if((shift.arrayOfWorkers.length > 1 && counter >= employee.colleagues.length -2)){
+    // console.log(counter, employee.Name)
+
+    return "false"
+  }else{
+    return "true"
+  }
+  
+}
 
 
-
-  checkIfWorkerCanWork(shift, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General) {
-    let counter = shift.workersRequired//aki
-    let shouldWeContinue;
+  checkIfWorkerCanWork(shift, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB) {
     let employees = getAllWithLessHoursWorked(arrayOfEmployees, getPersonThatWorkedTheLeastCB)
+    let counter = 0;
+    
+
+
+
     employees.forEach(function (element) {
+      counter++;
+      // let varemo = varemoCB(shift, element)
+      // // console.log(varemo, "varemo")
+      // if(counter > 1 && varemo === "false"){
+      //   return
+      // }
 
       if (shift.workersRequired === 0) {
         shift.fullyBooked === true;
@@ -157,44 +198,92 @@ export class TableComponent implements OnInit {
       if ((element.fullyBooked === false) && (element.hpw >= shift.hours) && (shift.workersRequired > 0 )
         && (!shift.arrayOfWorkers.includes(element))) {
         element.hpw -= shift.hours;
+        element.colleagues = shift.arrayOfWorkers;
         element.numberOfShiftsWorked++
         shift.arrayOfWorkers.push(element)
         readyToWorkArray.push(element);
         shift.workersRequired--;
+        
         markEmployeeFullyBooked(arrayOfEmployees, getLowestShiftHoursCB, shift2General)
 
-      } 
-      else if (element.hpw === 0) {
+      }
+        else if (element.hpw === 0) {
         element.fullyBooked = true
 
-      } else if(element){
-
       }
-      // else if(getHighestHpwCB(getLowestShiftHoursCB !== false)){
-      //   // thisCallback(shift, bagOfWorkers, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked ,getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked)
-      // }
     })
+    // console.log(employees)
+    // console.log(counter, "counter checkifworkercanwork")
 
   }
-  putWorkerInShift(shifts, callback, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getHighestHpwCB, getLowestShiftHoursCB, thisCallBack, shift2General) {
+
+
+
+  putWorkerInShift(getLeftOversCB,shuffleCB, shifts, callback, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getHighestHpwCB, getLowestShiftHoursCB, thisCallBack, shift2General, varemoCB) {
     let shouldWeContinue;
-
-
     shifts.forEach(function (element) {
-      callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
+      // shuffleCB(arrayOfEmployees)
+      callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
       shouldWeContinue = getHighestHpwCB(arrayOfEmployees, getLowestShiftHoursCB, shifts)
-      if (shouldWeContinue === true) {
-         callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General)
+      if (shouldWeContinue === true) {//quizas aqui podria ir el siguiente refinamiento
+         callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+         callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+         callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+         callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+         callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+
+      }else{
+        return
       }
-
-     
-
     })
-    return [arrayOfEmployees, readyToWorkArray, shifts]
+    // if (shouldWeContinue === true){
+    //   // thisCallBack(shuffleCB, shifts, callback, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getHighestHpwCB, getLowestShiftHoursCB, thisCallBack, shift2General)
+    //   shifts.forEach(function (element) {
+    //     // shuffleCB(shifts)
+    //     callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+    //     shouldWeContinue = getHighestHpwCB(arrayOfEmployees, getLowestShiftHoursCB, shifts)
+    //     if (shouldWeContinue === true) {//quizas aqui podria ir el siguiente refinamiento
+    //        callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+           
+    //     }else{
+    //       return
+    //     }
+    //   })
+    // }
+    // if (shouldWeContinue === true){
+    //   // thisCallBack(shuffleCB, shifts, callback, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getHighestHpwCB, getLowestShiftHoursCB, thisCallBack, shift2General)
+    //   shifts.forEach(function (element) {
+    //     // shuffleCB(shifts)
+    //     callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+    //     shouldWeContinue = getHighestHpwCB(arrayOfEmployees, getLowestShiftHoursCB, shifts)
+    //     if (shouldWeContinue === true) {//quizas aqui podria ir el siguiente refinamiento
+    //        callback(element, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getLowestShiftHoursCB, shift2General, varemoCB)
+    //       //  getLeftOversCB(element, arrayOfEmployees)
+    //     }else{
+    //       return
+    //     }
+    //   })
+    // }
+    if (shouldWeContinue === true){
+            thisCallBack(getLeftOversCB, shuffleCB, shifts, callback, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getHighestHpwCB, getLowestShiftHoursCB, thisCallBack, shift2General)
+
+    }
+      return [arrayOfEmployees, readyToWorkArray, shifts]
+ 
   }
-
-
-
+//remove leftOvers from parameters in putworkersinshift
+    getLeftOvers(element, arrayOfEmployees){
+      
+        for(let i = 0; i < arrayOfEmployees.length; i++){
+          if(arrayOfEmployees[i].hpw >= element.hours && arrayOfEmployees[i].fullyBooked != true){
+            element.arrayOfWorkers.push(arrayOfEmployees[i]);
+            arrayOfEmployees[i].hpw - element.hours;
+            element.workersRequired--
+            arrayOfEmployees[i].numberOfShiftsWorked++
+          }
+        }
+      
+    }
 
 
 
@@ -252,7 +341,25 @@ export class TableComponent implements OnInit {
 
 
 
-
+  //putWorkerInShift(getLeftOversCB,shuffleCB, shifts, callback, arrayOfEmployees, readyToWorkArray, getAllWithLessHoursWorked, getPersonThatWorkedTheLeastCB, markEmployeeFullyBooked, getHighestHpwCB, getLowestShiftHoursCB, thisCallBack, shift2General, varemoCB) {
+    //     shuffleCB(arrayOfEmployees)
+    
+    // shifts.forEach(function(element){
+    //   getLeftOversCB(element, arrayOfEmployees)
+          
+    //     for(let i = 0; i < arrayOfEmployees.length; i++){
+    //       if(arrayOfEmployees[i].hpw >= element.hours && arrayOfEmployees[i].fullyBooked != true){
+    //         element.arrayOfWorkers.push(arrayOfEmployees[i]);
+    //         arrayOfEmployees[i].hpw - element.hours;
+    //         element.workersRequired--
+    //         arrayOfEmployees[i].numberOfShiftsWorked++
+    //       }
+    //     }
+      
+    // })
+    //    console.log(shifts, arrayOfEmployees)
+          
+    //     }
 
 
 
