@@ -1,0 +1,9 @@
+#navbar {
+    background-image: linear-gradient(to right, white , #343a40);
+    position: fixed;
+    width: 100%;
+  }
+  
+  #navigation-area {
+    padding:0;
+  }

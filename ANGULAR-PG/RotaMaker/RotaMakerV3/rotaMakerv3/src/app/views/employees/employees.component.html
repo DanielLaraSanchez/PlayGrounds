@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+
+
+          <form #employeeForm="ngForm">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="_employeeService.selectedEmployee._id">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="_employeeService.selectedEmployee.name" placeholder="Name">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="position">Position</label>
+                <input id="position" class="form-control" type="text" name="position" #name="ngModel" [(ngModel)]="_employeeService.selectedEmployee.position" placeholder="Position">
+              </div>
+              <div class="form-group">
+                  <label for="hpw">Hours per Week</label>
+                  <input id="hpw" class="form-control" type="number" name="hpw" #name="ngModel" [(ngModel)]="_employeeService.selectedEmployee.hpw" placeholder="Hours Per Week">
+                </div>
+
+          
+              <button (click)="saveForm(employeeForm)" style="margin-right: 5px;"class="btn btn-primary">Save</button>
+              <button (click)="resetForm(employeeForm)" class="btn btn-primary">Reset Form</button>
+
+            </form>
+
+
+  </div>
+
+</div>
+<div class="divider"></div>
+
+
+<div class="container-fluid" style="margin-top:100px;">
+  <div class="row justify-content-center" style="margin-bottom:50px;">
+    <h1>Employees</h1>
+  </div>
+  <div class="row">
+
+
+    <div class="col-sm-12 col-md-3"  *ngFor="let employee of _employeeService.employees" (click)="updateEmployee(employee)" style="margin-bottom:10px;" >
+
+      <div class="card" style="width: 18rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+             <p>Name: {{employee.name}}</p>
+            <p>Position: {{employee.position}}</p>
+            <p>Hours Per Week: {{employee.hpw}}</p>
+          <button class="btn btn-primary" (click)="deleteEmployee(employee._id)">delete</button>
+
+
+      
+        </div>
+      </div>
+        </div>
+  </div>
+</div>
+
+
+
+
