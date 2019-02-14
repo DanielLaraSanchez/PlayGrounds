@@ -1,0 +1,66 @@
+
+.calendar-container{
+    /* width:850px; */
+}
+
+.col-week-number{
+    margin-right:40px;
+}
+.calendar-day{
+    width:120px;
+    height:120px;
+    background-color: grey;
+    border: 3px solid lightgrey;
+}
+.calendar-day:hover{
+    background-color: lightgrey;
+}
+.days-of-week{
+    position:fixed;
+}
+
+.hover:hover{
+    background-color:lightgrey;
+}
+
+.inactive{
+    opacity:0.6;
+}
+
+.container-chevron{
+    width:467px;
+    margin-bottom:150px;
+
+}
+
+.chevron{
+    margin:20px;
+}
+
+.row-chevron{
+    margin:10px;
+}
+
+.today {
+    color: red;
+}
+
+.row-day-setup{
+    margin-bottom: 50px;
+}
+
+.hover-setup:hover{
+
+    background-color: lightpink;
+}
+
+.button-apply-setup{
+    vertical-align:top;
+    margin-top:23px;
+    width:80px;height:30px;
+    transform:rotate(7deg);
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
+    -o-transform:rotate(90deg);
+}

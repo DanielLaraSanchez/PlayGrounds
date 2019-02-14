@@ -58,3 +58,35 @@
     </div>
   </div>
 </div> -->
+
+<!-- 
+<div *ngFor="let empl of unsavedEmployees"> {{empl.name}} hpw : {{empl.hpw}} hours worked: {{empl.hworked}}
+  <div *ngFor="let colleague of empl.colleagues"> {{colleague.name}}</div>
+<div *ngFor="let shift of empl.shiftsWorked">{{shift.shiftDay}}---hours{{shift.shifthours}}</div></div>
+
+<div><code>observable|async</code>: Time: {{ time | async }}</div>
+
+<div *ngFor="let shift of unsavedShifts">SHIFT : {{shift.day}}
+  <div *ngFor="let worker of shift.arrayOfWorkers">SHIFT ARRAYOF WORKERS: {{worker.name}}id-{{unsavedEmployees.indexOf(worker)}}</div>
+</div> -->
+
+
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th *ngFor="let shift of unsavedShifts">{{shift.day}}--{{shift.date.dayOfWeek}}</th>
+        <!-- <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td  *ngFor="let shift of unsavedShifts">
+          <p *ngFor="let employee of shift.arrayOfWorkers">{{employee.name}}</p>
+        </td>
+       
+      </tr>
+    
+     
+    </tbody>
+  </table>

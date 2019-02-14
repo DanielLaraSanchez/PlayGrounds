@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Employee } from '../models/employee';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,19 @@ export class EmployeesService {
 
 
   selectedEmployee: Employee;
-  employees: Employee[];
+  employees;
+  // public employees2: BehaviorSubject<any> = new BehaviorSubject(null)
 
 
   constructor(private _http: HttpClient) {
     this.selectedEmployee = new Employee();
    }
+
+  //  getEmployees2(){
+  //   this._http.get(this.URL_API).subscribe((res) => {
+  //      this.employees2.next(res);
+  //    })
+  //  }
 
 
   getEmployees(){

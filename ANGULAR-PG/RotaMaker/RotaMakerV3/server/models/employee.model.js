@@ -7,7 +7,9 @@ const EmployeeSchema = new Schema({
     hpw: {type: Number, required: false},
     salary: {type: Number, required: false},
     fullyBooked: {type: Boolean, required: false},
-    shiftsWorked: {type: Array, required: false}
+    shiftsWorked: {type: Array, required: false},
+    colleagues: {type: Array, required: false},
+    hworked: {type: Number, required: false}
 
     
 })

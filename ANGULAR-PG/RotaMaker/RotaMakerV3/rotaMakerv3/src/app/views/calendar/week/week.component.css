@@ -1,0 +1,23 @@
+.container-week{
+height:250px;
+}
+
+.row-week{
+    height:100%;
+}
+
+.col-week{
+    background-color:lightblue;
+    height:100px;
+    width:15%;
+    margin-left:2px;
+
+}
+
+.col-week:hover{
+    background-color: lavender;
+}
+
+.col-week-shifts{
+    height:300px;
+}

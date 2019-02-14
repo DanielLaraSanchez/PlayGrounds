@@ -6,6 +6,7 @@ import { HomeComponent } from './views/home/home.component';
 import { EmployeesComponent } from './views/employees/employees.component';
 import { ShiftsComponent } from './views/shifts/shifts.component';
 import { CalendarComponent } from './views/calendar/calendar.component';
+import { NotificationsComponent } from './views/notifications/notifications.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent
+  },
+  {
+    path: 'notifications',
+    component: NotificationsComponent
   }
 
  

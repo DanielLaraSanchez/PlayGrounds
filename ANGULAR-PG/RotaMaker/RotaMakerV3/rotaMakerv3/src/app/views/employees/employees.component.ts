@@ -28,8 +28,14 @@ export class EmployeesComponent implements OnInit {
   }
 
   saveForm(form?: NgForm){
+    const newEmployee = new Employee();
+    newEmployee.name = form.value.name;
+    newEmployee.position = form.value.position;
+    newEmployee.hpw = form.value.hpw;
+    newEmployee.hworked = 0;
     if(!form.value._id){
-      this._employeeService.createEmployee(form.value).subscribe((res) => {
+
+      this._employeeService.createEmployee(newEmployee).subscribe((res) => {
         this.resetForm(form);
         this.toastr.success('', 'Saved Successfully!', {timeOut: 1000} );
         this.getEmployees();

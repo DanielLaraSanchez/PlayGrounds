@@ -1,0 +1,16 @@
+
+
+
+  <div class="container-fluid container-week">
+    <div class="row row-week justify-content-center align-items-center">
+        <div class="col col-week"  *ngFor="let day of data[0]" (click)="openDayModal(day)">{{day.format('dddd')}}</div>
+
+    </div>
+  </div>
+  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-week-shifts"></div>
+    </div>
+  </div>

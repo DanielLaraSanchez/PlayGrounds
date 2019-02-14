@@ -9,13 +9,16 @@ res.json(employees);
 }
 
 employeeController.createEmployee = async function(req, res){
+    console.log(req.body)
    const employee = new Employee({
        name: req.body.name,
        position: req.body.position,
        hpw: req.body.hpw,
        salary: req.body.salary,
        fullyBooked: req.body.fullyBooked,
-       shiftsWorked: []
+       shiftsWorked: [],
+       colleagues: [],
+       hworked: req.body.hworked
        
     })
    await employee.save();
@@ -37,7 +40,9 @@ employeeController.updateEmployee = async function(req, res){
         hpw: req.body.hpw,
         salary: req.body.salary,
         fullyBooked: req.body.fullyBooked,
-        shiftsWorked: req.body.shiftsWorked
+        shiftsWorked: req.body.shiftsWorked,
+        colleagues: req.body.colleagues,
+        hworked: req.body.hworked
     }
     await Employee.findByIdAndUpdate(req.params.id, {$set: employee}, {new: true})
     res.json({

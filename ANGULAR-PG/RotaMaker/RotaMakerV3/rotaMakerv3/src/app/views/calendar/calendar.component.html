@@ -4,17 +4,57 @@
   </div>
 </div> -->
 
-
+<!-- 
 <div class="row">
-  <div class="col-sm-12 col-md-3"  *ngFor="let day of days" >
+  <div class="col-sm-11 col-md-3"  *ngFor="let day of days" >
 
 <div class="card" (click)="openModal1(day)" style="width: 18rem;">
-  <!-- <img src="..." class="card-img-top" alt="..."> -->
   <div class="card-body">
     <span class="white-text">{{day.day}}{{day.dayOfWeek}}</span>
 
   </div>
 </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="container container-chevron">
+  <div class="row justify-content-start row-chevron">
+      <div class="fa fa-chevron-left chevron" (click)="prevMonth()"></div>
+  <div>{{date.format('MMMM')}}{{date.format('YYYY')}}</div>
+  <div class="fa fa-chevron-right chevron" (click)="nextMonth()"></div>
+  </div>
+</div> -->
+
+<div class="container-fluid calendar-container">
+  <div class="row justify-content-center row-day-setup" >
+    <div class="div" style="margin-right:40px;">Setup</div>
+    <div class="calendar-day hover-setup" (click)="openModalForSetup(day.name)" *ngFor="let day of daysSetup"> {{day.name}}</div>
+   
+    <button class="btn btn-primary btn-sm button-apply-setup" (click)="applySetup()">Apply</button>
+
+  </div>
+</div>
+
+<div class="container-fluid calendar-container">
+  <div class="row justify-content-center" style="margin-top:10px;" *ngFor="let week of daysInYear">
+    <div class="div col-week-number">
+        week:{{week.weekNumber}}
+
+    </div>
+
+    <!-- <div class="calendar-day" [ngClass]="{'inactive': !day, 'today': todayCheck(day), hover: 'hoverIsNotNull(day)'}" *ngFor="let day of week.daysInWeek" (click)="openModal(day)"> -->
+        <div class="calendar-day" [ngClass]="{'inactive': !day}" *ngFor="let day of week.daysInWeek" (click)="openModal(day.dayMoment)">
+ 
+      <p>{{day.dayName}}</p>
+        <p>{{day.dayNumber}}</p>
+
+    </div>
+    <div class="col-lg-1">
+        <button class="btn btn-primary btn-sm button-apply-setup" (click)="putEmployeesInThisWeeksShifts(week)">Generate</button>
+
+    </div>
+
   </div>
 </div>
 

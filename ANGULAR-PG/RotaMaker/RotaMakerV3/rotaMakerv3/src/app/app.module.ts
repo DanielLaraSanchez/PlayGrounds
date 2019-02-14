@@ -11,26 +11,35 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
-import { NavbarComponent } from './common/navbar/navbar.component';
 import { EmployeesComponent } from './views/employees/employees.component';
 import { ShiftsComponent } from './views/shifts/shifts.component';
 import { HomeComponent } from './views/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarComponent } from './views/calendar/calendar.component';
-import { DayComponent } from './views/day/day.component';
-import { Modal1Component } from './utility/modal1/modal1.component';
+import { WeekComponent } from './views/calendar/week/week.component';
+import { DayComponent } from './views/calendar/week/day/day.component';
+import { EmployeeComponent } from './views/employees/employee/employee.component';
+import { ShiftComponent } from './views/shifts/shift/shift.component';
+import { NotificationsComponent } from './views/notifications/notifications.component';
+import { DayshiftsComponent } from './common/ng-components/dayshifts/dayshifts.component';
+import { DaysetupComponent } from './views/calendar/week/daysetup/daysetup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    NavbarComponent,
     EmployeesComponent,
     ShiftsComponent,
     HomeComponent,
     CalendarComponent,
+
+    WeekComponent,
     DayComponent,
-    Modal1Component
+    EmployeeComponent,
+    ShiftComponent,
+    NotificationsComponent,
+    DayshiftsComponent,
+    DaysetupComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,7 @@ import { Modal1Component } from './utility/modal1/modal1.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [Modal1Component]
+  entryComponents: [WeekComponent, DayComponent, DaysetupComponent]
 
 })
 export class AppModule { }
