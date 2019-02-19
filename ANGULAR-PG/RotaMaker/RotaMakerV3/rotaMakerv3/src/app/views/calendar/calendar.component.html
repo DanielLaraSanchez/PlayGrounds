@@ -1,30 +1,4 @@
-<!-- <div class="container-fluid">
-  <div class="row">
-    <div class="col" *ngFor="let day of days">{{day}}</div>
-  </div>
-</div> -->
-
 <!-- 
-<div class="row">
-  <div class="col-sm-11 col-md-3"  *ngFor="let day of days" >
-
-<div class="card" (click)="openModal1(day)" style="width: 18rem;">
-  <div class="card-body">
-    <span class="white-text">{{day.day}}{{day.dayOfWeek}}</span>
-
-  </div>
-</div>
-  </div>
-</div> -->
-
-
-<!-- <div class="container container-chevron">
-  <div class="row justify-content-start row-chevron">
-      <div class="fa fa-chevron-left chevron" (click)="prevMonth()"></div>
-  <div>{{date.format('MMMM')}}{{date.format('YYYY')}}</div>
-  <div class="fa fa-chevron-right chevron" (click)="nextMonth()"></div>
-  </div>
-</div> -->
 
 <div class="container-fluid calendar-container">
   <div class="row justify-content-center row-day-setup" >
@@ -43,7 +17,7 @@
 
     </div>
 
-    <!-- <div class="calendar-day" [ngClass]="{'inactive': !day, 'today': todayCheck(day), hover: 'hoverIsNotNull(day)'}" *ngFor="let day of week.daysInWeek" (click)="openModal(day)"> -->
+    <div class="calendar-day" [ngClass]="{'inactive': !day, 'today': todayCheck(day), hover: 'hoverIsNotNull(day)'}" *ngFor="let day of week.daysInWeek" (click)="openModal(day)">
         <div class="calendar-day" [ngClass]="{'inactive': !day}" *ngFor="let day of week.daysInWeek" (click)="openModal(day.dayMoment)">
  
       <p>{{day.dayName}}</p>
@@ -51,10 +25,52 @@
 
     </div>
     <div class="col-lg-1">
-        <button class="btn btn-primary btn-sm button-apply-setup" (click)="putEmployeesInThisWeeksShifts(week)">Generate</button>
+       <div *ngIf="week.setupIsApplied"> <button class="btn btn-primary btn-sm" (click)="generateRota(week)">Generate Rota</button></div>
+      <div *ngIf="week.isGenerated"><button class="btn btn-success btn-sm" (click)="openViewRotaModal(week)">View Rota</button></div> 
+
 
     </div>
 
   </div>
-</div>
+</div> -->
 
+
+<div class="container-fluid container-whole-calendar">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+  
+       
+        <div class="container-fluid container-calendar">
+          
+          <div class="row justify-content-center row-header">
+            <h1 class="h1-year">2019</h1>
+          </div>
+  
+          <div class="row justify-content-center align-items-center row-days-setup">
+            <div class="div-days-setup" (click)="openModalForSetup(day.name)" *ngFor="let day of daysSetup" ><p class="p-centered">{{day.shortName}}</p></div>
+            <button class="btn btn-primary btn-sm button-apply" (click)="applySetup()">Apply</button>
+            <!-- <button class="btn btn-primary btn-sm button-apply" (click)="resetSetup()">Apply</button> -->
+
+
+          </div>
+        
+          <div class="row row-days justify-content-center" *ngFor="let week of daysInYear">
+            <div class="col-lg-1 div div-week-days">
+              <div class="rotate">WEEK {{week.weekNumber}}</div>
+            </div>
+  
+            <div *ngFor="let day of week.daysInWeek" class="div-days" (click)="openModal(day.dayMoment)">
+             <p class="p-centered"> {{day.dayNumber}}</p>
+            </div>
+            <div class="col-lg-1 button-generate-div">
+              <button *ngIf="week.setupIsApplied" (click)="generateRota(week)" class="btn btn-primary btn-sm button-generate"><i class="fas fa-hammer icon-hammer"></i>Generate</button>
+              <button *ngIf="week.isGenerated" (click)="openViewRotaModal(week)" class="btn btn-success btn-sm button-generate"><i class="far fa-eye"></i>View</button>
+
+            </div>
+          </div>
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>

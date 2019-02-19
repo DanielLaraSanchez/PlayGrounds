@@ -25,11 +25,8 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent
-  },
-  {
-    path: 'notifications',
-    component: NotificationsComponent
   }
+  
 
  
   

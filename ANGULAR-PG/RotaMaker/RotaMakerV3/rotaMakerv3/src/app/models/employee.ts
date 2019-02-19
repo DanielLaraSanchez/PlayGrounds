@@ -4,7 +4,7 @@ export class Employee {
 
 
 
-    constructor(_id = '', name = '', position = '',  hpw = 0, salary = 0, fullyBooked = false, shiftsWorked = [], colleagues = [], hworked = 0){ 
+    constructor(_id = '', name = '', position = '',  hpw = 0, salary = 0, fullyBooked = false, shiftsWorked = [], colleagues = [], hworked = 0, aviability = {monday:[], tuesday:[], wednesday: [], thursday: [], friday: [], saturday: [], sunday: []}){ 
         this._id = _id;
         this.name = name;
         this.position = position;
@@ -14,6 +14,7 @@ export class Employee {
         this.shiftsWorked = shiftsWorked;
         this.colleagues = colleagues;
         this.hworked = hworked;
+        this.aviability = aviability;
     }
 
 
@@ -29,6 +30,7 @@ export class Employee {
     shiftsWorked: Shift[];
     colleagues: Array<any>;
     hworked: number;
+    aviability: object;
 
 
 

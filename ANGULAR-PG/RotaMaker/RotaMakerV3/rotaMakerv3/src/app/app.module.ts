@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { NotificationsComponent } from './views/notifications/notifications.comp
 import { DayshiftsComponent } from './common/ng-components/dayshifts/dayshifts.component';
 import { DaysetupComponent } from './views/calendar/week/daysetup/daysetup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,7 @@ import { DaysetupComponent } from './views/calendar/week/daysetup/daysetup.compo
     ShiftComponent,
     NotificationsComponent,
     DayshiftsComponent,
-    DaysetupComponent
+    DaysetupComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,11 +50,12 @@ import { DaysetupComponent } from './views/calendar/week/daysetup/daysetup.compo
     HttpClientModule,
     ModalModule.forRoot(),
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [WeekComponent, DayComponent, DaysetupComponent]
+  entryComponents: [WeekComponent, DayComponent, DaysetupComponent, ShiftComponent]
 
 })
 export class AppModule { }

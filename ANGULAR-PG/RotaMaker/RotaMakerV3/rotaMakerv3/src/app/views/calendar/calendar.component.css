@@ -1,66 +1,121 @@
 
-.calendar-container{
-    /* width:850px; */
+body{
+    background-color: #343a40;
+}
+html{
+    background-color: #343a40;
 }
 
-.col-week-number{
-    margin-right:40px;
-}
-.calendar-day{
-    width:120px;
-    height:120px;
-    background-color: grey;
-    border: 3px solid lightgrey;
-}
-.calendar-day:hover{
-    background-color: lightgrey;
-}
-.days-of-week{
-    position:fixed;
+.container-whole-calendar{
+    margin-top: -120px;
 }
 
-.hover:hover{
-    background-color:lightgrey;
+.container-calendar{
+    width: 100%;
+    /* background-color: lightsteelblue; */
+    -webkit-border-radius: 12px 12px 0px 0px;
+    -moz-border-radius: 12px 12px 0px 0px; 
+    border-radius: 12px 12px 0px 0px;
+   
 }
 
-.inactive{
-    opacity:0.6;
+.row-header{
+    background-color: lightsteelblue ;
+    padding: 60px;
+    -webkit-border-radius: 12px 12px 0px 0px;
+    -moz-border-radius: 12px 12px 0px 0px; 
+    border-radius: 12px 12px 0px 0px;
+    color:white;
 }
 
-.container-chevron{
-    width:467px;
-    margin-bottom:150px;
+.row-days-setup{
+    background-color: white;
+    height: 100px;
+
 
 }
 
-.chevron{
-    margin:20px;
+
+
+.div-days-setup{
+    width:100px;
+    height: 100%;
+    line-height:100px;
+    text-align:center;
+
+    
+    
 }
 
-.row-chevron{
-    margin:10px;
+.div-days-setup:hover{
+    background-color: lightblue;
+  
 }
 
-.today {
-    color: red;
+.p-centered{
+    vertical-align: midle;
+    display: inline-block;
+    line-height:normal;
 }
 
-.row-day-setup{
-    margin-bottom: 50px;
+.row-days{
+    margin-bottom:5px;
+    /* background-color: lightsteelblue; */
+
 }
 
-.hover-setup:hover{
+.div-week-days{
+    /* margin-left:-30px;
+    margin-top:40px; */
+    /* border:1px solid lightblue; */
+    /* position: absolute; */
+    margin-left:-370px;
+    position: absolute;
+    height:fit-content;
 
-    background-color: lightpink;
+ 
 }
 
-.button-apply-setup{
-    vertical-align:top;
-    margin-top:23px;
-    width:80px;height:30px;
-    transform:rotate(7deg);
-    -ms-transform:rotate(90deg); /* IE 9 */
-    -moz-transform:rotate(90deg); /* Firefox */
-    -webkit-transform:rotate(90deg); /* Safari and Chrome */
-    -o-transform:rotate(90deg);
+.rotate{
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(90deg);
+    margin-top:40px;
+    font-size:12px;
+}
+
+
+.div-days{
+    background-color: lightsteelblue;
+
+    line-height:72px;
+    width:100px;
+    height: 100px;
+    text-align:center;
+    padding:1rem;
+    border-right:1px solid lightgoldenrodyellow;
+    border-left:1px solid lightgoldenrodyellow;
+
+}
+
+.div-days:hover{
+    background-color:lightgoldenrodyellow;
+}
+
+
+.button-generate-div{
+    position: absolute;
+    margin-left:370px;
+}
+
+.button-apply{
+    position:absolute;
+    margin-left:377px;
+}
+
+
+
+.icon-hammer{
+
+    font-size:8px;
 }

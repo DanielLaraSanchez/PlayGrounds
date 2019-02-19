@@ -8,6 +8,7 @@ import { DaysetupComponent } from './week/daysetup/daysetup.component';
 import { EmployeesService } from 'src/app/services/employees.service';
 import { Shift } from 'src/app/models/shift';
 import { Employee } from 'src/app/models/employee';
+import { ShiftsService } from 'src/app/services/shifts.service';
 
 
 
@@ -26,12 +27,12 @@ export class CalendarComponent implements OnInit {
   unsavedEmployees = [];
 
 
-  daysSetup = [{ name: "Monday" }, { name: "Tuesday" }, { name: "Wednesday" }, { name: "Thursday" }, { name: "Friday" }, { name: "Saturday" }, { name: "Sunday" }]
+  daysSetup = [{ name: "Monday", shortName: "MON" }, { name: "Tuesday", shortName: "TUE" }, { name: "Wednesday", shortName: "WED" }, { name: "Thursday", shortName: "THU" }, { name: "Friday", shortName: "FRI" }, { name: "Saturday", shortName: "SAT" }, { name: "Sunday", shortName: "SUN" }]
   setupShifts = [];
   bsModalRef: BsModalRef;
   date;
 
-  constructor(public calendarService: CalendarService, private modalService: BsModalService, public employeeService: EmployeesService) {
+  constructor(public calendarService: CalendarService, private modalService: BsModalService, public employeeService: EmployeesService, public shiftService: ShiftsService) {
   }
 
 
@@ -39,7 +40,7 @@ export class CalendarComponent implements OnInit {
     this.date = moment();
     this.unsavedEmployees = this.shuffle(await this.getEmployees());
     this.daysInYear = this.getAllWeeksInYear();
-    this.setupShifts = JSON.parse(sessionStorage.getItem('temporaryShiftsSetup')) //el setup shifts tiene que ser guardado a la database
+    this.setupShifts = await this.getShifts()//el setup shifts tiene que ser guardado a la database
     console.log(this.daysInYear)
     console.log(this.setupShifts)
     console.log(this.unsavedEmployees)
@@ -47,11 +48,21 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  putEmployeesInThisWeeksShifts(week) {
-    this.unsavedShifts = this.putEmployeesInThisWeek(week)
-    console.log(this.unsavedShifts)
-    this.putEmployeesInShifts(this.unsavedShifts)
+  getShifts():any{
+    return new Promise ((resolve, reject) => {
+      this.shiftService.getShifts().subscribe((res) => {
+        resolve(res)
+      })
+    })
+  }
 
+ generateRota(week) {
+    this.unsavedShifts = this.putEmployeesInThisWeek(week)
+    this.putEmployeesInShifts(this.unsavedShifts)
+    week.isGenerated = true;
+    this.calendarService.createWeek(week).subscribe((res) => {
+      console.log(res)
+    })
   }
 
   putEmployeesInThisWeek(week) {
@@ -67,7 +78,6 @@ export class CalendarComponent implements OnInit {
 
 
   applySetupTool1(shiftSetup) {
-    console.log(shiftSetup)
     this.daysInYear.forEach((week) => {
       week.daysInWeek.forEach((day) => {
         if (shiftSetup.day == day.dayName) {
@@ -77,6 +87,7 @@ export class CalendarComponent implements OnInit {
           day.arrayOfShifts.push(newObjShift)
         }
       });
+      week.setupIsApplied = true
     });
   }
 
@@ -90,7 +101,10 @@ export class CalendarComponent implements OnInit {
 
 
 
+
+
 //Open modal functions ****************************
+
 
   openModal(day) {
     const initialState = {
@@ -115,6 +129,18 @@ export class CalendarComponent implements OnInit {
 
   }
 
+  openViewRotaModal(week){
+    const initialState = {
+      data: [
+        week
+      ],
+      title: 'Modal with component'
+    };
+    this.bsModalRef = this.modalService.show(WeekComponent, { initialState, class: 'modal-lg' });
+    this.bsModalRef.content.closeBtnName = 'Close';
+    console.log(week)
+  }
+
 
 
   //put workers in shifts****************************************
@@ -135,12 +161,18 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  putEmployeesInShift(shift: Shift) {
+  async putEmployeesInShift(shift: Shift) {
+    this.unsavedEmployees = await this.getEmployees()
     let employees = this.shuffle(this.getAllWithLessHoursWorked(this.unsavedEmployees))
     employees.forEach((empl) => {
       const isWorkingToday = this.avoidEmployeToWorkSameDay(empl, shift)
       const newHpw = empl.hpw - empl.hworked;
-      if ((isWorkingToday === false) && (empl.fullyBooked === false) && (empl.hpw >= shift.hours) && (shift.workersRequired > shift.arrayOfWorkers.length) && (newHpw >= shift.hours) && (!shift.arrayOfWorkers.includes(empl))) {
+      if ((isWorkingToday === false) && 
+      (empl.fullyBooked === false) && 
+      (empl.hpw >= shift.hours) &&
+       (shift.workersRequired > shift.arrayOfWorkers.length) && 
+       (newHpw >= shift.hours) &&
+        (!shift.arrayOfWorkers.includes(empl))) {
         this.actionOnEmployee(empl, shift);
       }
     });
@@ -297,20 +329,18 @@ export class CalendarComponent implements OnInit {
       });
     }
   
-    getShifts() {
-      return JSON.parse(sessionStorage.getItem('temporaryShifts'))
-    }
   
   
   
   
     getAllWeeksInYear() {
       let todaysYearsMonthsNumber = moment().isoWeeksInYear();
+      let todaysYear = moment().format('Y')
       let test = moment('7', 'WWW').startOf('isoWeek')
       let arrayDays = [];
   
       for (let i = 0; i < todaysYearsMonthsNumber; i++) {
-        arrayDays.push({ weekNumber: i + 1, daysInWeek: this.getAllDaysInWeek(i + 1), month: this.getAllDaysInWeek(i + 1)[0].month })
+        arrayDays.push({ weekNumber: i + 1, daysInWeek: this.getAllDaysInWeek(i + 1), month: this.getAllDaysInWeek(i + 1)[0].month, year: todaysYear ,isGenerated: false, setupIsApplied: false })
       }
       return arrayDays
     }

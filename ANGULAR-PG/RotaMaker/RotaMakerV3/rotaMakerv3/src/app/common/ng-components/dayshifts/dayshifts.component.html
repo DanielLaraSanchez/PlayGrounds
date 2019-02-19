@@ -1,10 +1,15 @@
 
 
    
-      <div class="container-fluid" style="background-color:blueviolet;width:100%;">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-1" style="background-color: green;height:400px;width:100%;"></div>
-          <div class="col-lg-11" style="background-color: red;height:400px;width:100%;"></div>
+          <div class="col-lg-1 col-horas">
+            
+            <p  class="p-horas" *ngFor="let hora of horas">{{hora}}</p>
+        
+
+          </div>
+          <div class="col-lg-11 col-shifts"></div>
         </div>
       </div>
 

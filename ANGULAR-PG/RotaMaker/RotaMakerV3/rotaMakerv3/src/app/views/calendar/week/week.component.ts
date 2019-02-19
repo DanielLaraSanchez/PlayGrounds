@@ -20,10 +20,17 @@ export class WeekComponent implements OnInit {
   constructor(public modalService: BsModalService, public calendarService: CalendarService) { }
 
   ngOnInit() {
+    this.weekGenerator();
 console.log(this.data)
+
   }
 
 
+weekGenerator(){
+  this.data[0].daysInWeek.forEach((day) => {
+    this.week.push(day)
+  })
+}
 
 
 
@@ -34,18 +41,6 @@ console.log(this.data)
 
 
 
-openDayModal(data) {
-  // let data = this.getWeek(day);
-  
-     const initialState = {
-      data: [
-        data
-      ],
-      title: 'Modal with component'
-    };
-    this.bsModalRef = this.modalService.show(DayComponent, {initialState, class: 'modal-lg'});
-    this.bsModalRef.content.closeBtnName = 'Close';
-  }
 
 
 
