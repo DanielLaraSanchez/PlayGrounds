@@ -20,9 +20,17 @@ import { ShiftsService } from 'src/app/services/shifts.service';
 })
 export class CalendarComponent implements OnInit {
 
+
+  //Calendar+++++++++++++++++++++++++++++++++++++++++++++++
   // days = [];
   daysInYear = [];
-
+  date;
+  date2;
+  month;
+  month2;
+  year;
+  daysInMonth = [];
+  //++++++++++++++++++++++++++++++++++++++++++++++++++++++
   unsavedShifts;
   unsavedEmployees = [];
 
@@ -30,39 +38,159 @@ export class CalendarComponent implements OnInit {
   daysSetup = [{ name: "Monday", shortName: "MON" }, { name: "Tuesday", shortName: "TUE" }, { name: "Wednesday", shortName: "WED" }, { name: "Thursday", shortName: "THU" }, { name: "Friday", shortName: "FRI" }, { name: "Saturday", shortName: "SAT" }, { name: "Sunday", shortName: "SUN" }]
   setupShifts = [];
   bsModalRef: BsModalRef;
-  date;
+
 
   constructor(public calendarService: CalendarService, private modalService: BsModalService, public employeeService: EmployeesService, public shiftService: ShiftsService) {
   }
 
 
   async ngOnInit() {
-    this.date = moment();
     this.unsavedEmployees = this.shuffle(await this.getEmployees());
-    this.daysInYear = this.getAllWeeksInYear();
-    this.setupShifts = await this.getShifts()//el setup shifts tiene que ser guardado a la database
-    console.log(this.daysInYear)
-    console.log(this.setupShifts)
-    console.log(this.unsavedEmployees)
+    this.setupShifts = await this.getShifts();
+    this.date = moment();
+    this.date2 = moment();
+    this.month = this.date.format('MMMM')
+    this.month2 = this.date2.format('MMMM')
+    this.year = this.date.format('YYYY')
+
+    this.month2 = this.date2.format('MMMM')
+    this.daysInYear = this.getAllWeeksInYear(this.date);
+    this.daysInMonth = this.getMonth(this.month, this.daysInYear)
+
+
 
 
   }
 
-  getShifts():any{
-    return new Promise ((resolve, reject) => {
+
+
+
+
+  getAllWeeksInYear(date) {
+    let todaysYearsMonthsNumber = date.isoWeeksInYear();
+    let todaysYear = date.format('Y')
+    let arrayDays = [];
+    for (let i = 0; i < todaysYearsMonthsNumber; i++) {
+      arrayDays.push({ weekNumber: i + 1, daysInWeek: this.getAllDaysInWeek(i + 1), month: this.getAllDaysInWeek(i + 1)[0].month, year: todaysYear, isGenerated: false, setupIsApplied: false })
+    }
+    console.log(arrayDays)
+    return arrayDays
+  }
+  getAllDaysInWeek(week) {
+    let startOfWeek = moment(`${week}`, 'WWW').startOf('isoWeeks');
+    let endOfWeek = moment(`${week}`, 'WWW').endOf('isoWeeks');
+    let days = [];
+    let day = startOfWeek;
+    while (day <= endOfWeek) {
+      days.push({ dayMoment: day, arrayOfShifts: [], dayName: day.format('dddd'), dayNumber: day.format('D'), month: day.format('MMMM'), dayYear: day.format('Y'), dayDate: day.format('L'), dayWeek: day.format('W') });
+      day = day.clone().add(1, 'd');
+    }
+    return days
+  }
+
+
+
+  getMonth(month, arrayDays) {
+    let result = arrayDays.filter((element) => {
+      return element.month === month
+    })
+
+    console.log(result)
+    return result
+  }
+
+  getNextMonth(arrayDays) {
+    let nextMonth = this.date2.add(1, 'month').format('MMMM')
+
+    console.log(nextMonth, "nextmonthdate")
+
+    let result = arrayDays.filter((element) => {
+      return element.month === nextMonth
+    });
+
+    console.log(result, "result")
+    this.month2 = nextMonth
+    this.daysInMonth = result;
+
+  }
+
+getPreviousMonth(arrayDays){
+  let prevMonth = this.date2.subtract(1, 'month').format('MMMM')
+  let result = arrayDays.filter((element) => {
+    return element.month === prevMonth
+  });
+
+  console.log(result, "result")
+  this.month2 = prevMonth
+  this.daysInMonth = result;
+
+}
+
+  // nextMonth(){
+  //   this.date.add(1, 'M');
+  //   this.daysArray = this.createCalendar(this.date);
+  // }
+
+  // prevMonth(){
+  //   this.date.subtract(1, 'M');
+  //   this.daysArray = this.createCalendar(this.date);
+  // }
+  test(week) {
+    let startOfWeek = moment(`${week}`, 'WWW').startOf('isoWeeks');
+    let date = moment({ year: 2020 }).add(1, 'years')
+    let startWeek = date.startOf('week').add(1, 'day')
+    console.log(startWeek, "startWeek")
+    // let test = moment('7', 'WWW').startOf('isoWeek')
+    // let test2 = moment().add(1, 'year').week(2).startOf('isoWeek')
+    // let test3 = date.add(1, 'week')
+    // let testtest = test3.startOf('isoWeek')
+    // let test4 = moment().startOf('isoWeeks')
+    // console.log( testtest, "test")
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  getShifts(): any {
+    return new Promise((resolve, reject) => {
       this.shiftService.getShifts().subscribe((res) => {
         resolve(res)
       })
     })
   }
 
- generateRota(week) {
+  async generateRota(week) {
     this.unsavedShifts = this.putEmployeesInThisWeek(week)
     this.putEmployeesInShifts(this.unsavedShifts)
     week.isGenerated = true;
-    this.calendarService.createWeek(week).subscribe((res) => {
-      console.log(res)
-    })
+    // this.calendarService.createWeek(week).subscribe((res) => {
+    //   console.log(res)
+    // })
+    this.unsavedEmployees = await this.shuffle(this.getEmployees());
+
   }
 
   putEmployeesInThisWeek(week) {
@@ -72,6 +200,7 @@ export class CalendarComponent implements OnInit {
         arrayShifts.push(shift);
       })
     })
+
     return arrayShifts;
   }
 
@@ -103,7 +232,7 @@ export class CalendarComponent implements OnInit {
 
 
 
-//Open modal functions ****************************
+  //Open modal functions ****************************
 
 
   openModal(day) {
@@ -129,7 +258,7 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  openViewRotaModal(week){
+  openViewRotaModal(week) {
     const initialState = {
       data: [
         week
@@ -161,17 +290,22 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  async putEmployeesInShift(shift: Shift) {
-    this.unsavedEmployees = await this.getEmployees()
-    let employees = this.shuffle(this.getAllWithLessHoursWorked(this.unsavedEmployees))
+  putEmployeesInShift(shift: Shift) {
+    // this.unsavedEmployees = await this.getEmployees()
+    let employees = this.getAllWithLessHoursWorked(this.unsavedEmployees)
     employees.forEach((empl) => {
+      let shiftDay = shift.day.normalize()
+      let empStart = empl.aviability[shiftDay].map((av) => av)
       const isWorkingToday = this.avoidEmployeToWorkSameDay(empl, shift)
       const newHpw = empl.hpw - empl.hworked;
-      if ((isWorkingToday === false) && 
-      (empl.fullyBooked === false) && 
-      (empl.hpw >= shift.hours) &&
-       (shift.workersRequired > shift.arrayOfWorkers.length) && 
-       (newHpw >= shift.hours) &&
+      if ((empStart['0'] === null)) {
+        return
+      }
+      if ((isWorkingToday === false) &&
+        (empl.fullyBooked === false) &&
+        (empl.hpw >= shift.hours) &&
+        (shift.workersRequired > shift.arrayOfWorkers.length) &&
+        (newHpw >= shift.hours) &&
         (!shift.arrayOfWorkers.includes(empl))) {
         this.actionOnEmployee(empl, shift);
       }
@@ -179,27 +313,58 @@ export class CalendarComponent implements OnInit {
   }
 
   putEmployeesInShiftLessRefined(shift: Shift) {
-    let employees = this.shuffle(this.unsavedEmployees)
-    employees.forEach((empl) => {
+    // let employees = await this.getEmployees()
+    this.unsavedEmployees.forEach((empl) => {
       const isWorkingToday = this.avoidEmployeToWorkSameDay(empl, shift)
+      let isworkingThisShift = this.isWorkinInThisShift(shift, empl);
+
       if (empl.hpw <= empl.hworked) {
         empl.fullyBooked = true;
       }
       this.putTrulyFullyBookedEmployees(empl);
       const newHpw = empl.hpw - empl.hworked;
-      if ((isWorkingToday === false) && (empl.fullyBooked === false) && (empl.hpw >= shift.hours) && (shift.workersRequired > shift.arrayOfWorkers.length) && (newHpw >= shift.hours) && (!shift.arrayOfWorkers.includes(empl))) {
+      if ((isWorkingToday === false && isworkingThisShift === false) && (empl.fullyBooked === false) && (empl.hpw >= shift.hours) && (shift.workersRequired > shift.arrayOfWorkers.length) && (newHpw >= shift.hours) && (!shift.arrayOfWorkers.includes(empl))) {
         this.actionOnEmployee(empl, shift);
       }
 
     });
   }
   actionOnEmployee(employee, shift: Shift) {
-    employee.hworked += shift.hours
-    shift.arrayOfWorkers.push(employee)
-    employee.shiftsWorked.push({ shifthours: shift.hours, shiftId: this.unsavedShifts.indexOf(shift), shiftDay: shift.day })
+    let shiftDay = shift.day.normalize()
+    let shiftTimeStart = Number(shift.timeStart)
+    let empAvStart = Number(employee.aviability[shiftDay]['0']);
+    let empAvFinish = Number(employee.aviability[shiftDay]['1']);
+    let isworkingThisShift = this.isWorkinInThisShift(shift, employee);
+    // let isWorkingToday = this.avoidEmployeToWorkSameDay(employee, shift)
+    // console.log(isWorkingToday, "isWorkingToday", employee, shift)
+    if (employee.aviability[shiftDay]['0'] === null) {
+      return
+    }
+    else if ((empAvStart <= shiftTimeStart) &&
+      (empAvFinish >= Number(shift.timeFinish)) && (isworkingThisShift === false)) {
+      // console.log(employee, shift.arrayOfWorkers, isworkingToday , "employee arrOfworkers")
+      employee.hworked += shift.hours
+      shift.arrayOfWorkers.push(employee)
+      // employee.shiftsWorked.push({ shifthours: shift.hours, shiftId: this.unsavedShifts.indexOf(shift), shiftDay: shift.day })
+      employee.shiftsWorked.push({ shifthours: shift.hours, shiftDay: shift.day })
+
+      console.log("aqui", employee.shiftsWorked)
+
+    } else {
+      console.log("nadie disponible este dia")
+
+    }
   }
 
-
+  isWorkinInThisShift(shift, employee) {
+    let bool = false
+    shift.arrayOfWorkers.forEach((worker) => {
+      if (employee._id === worker._id) {
+        bool = true
+      }
+    })
+    return bool
+  }
 
 
   // TOOLS ****************************************************************************************
@@ -207,11 +372,15 @@ export class CalendarComponent implements OnInit {
 
   avoidEmployeToWorkSameDay(emp, shift: Shift) {
     let bool = false
-    emp.shiftsWorked.forEach((shiftEmployee) => {
-      if (shift.day === shiftEmployee.shiftDay) {
+    console.log(emp.shiftsWorked)
+    emp.shiftsWorked.forEach((element) => {
+      console.log(emp, "emp")
+      if (element.shiftDay === shift.day) {
         bool = true
       }
     })
+
+    //  console.log(bool, "boolean", shift.day)
     return bool
   }
 
@@ -274,16 +443,19 @@ export class CalendarComponent implements OnInit {
     this.unsavedEmployees.forEach((emp) => {
       let empHpw = emp.hpw - emp.hworked;
       shifts.forEach((shift: Shift) => {
-        emp.shiftsWorked.forEach((empShiftWorked) => {
-          if (empShiftWorked.shiftDay !== shift.day && emp.fullyBooked === false && empHpw >= shift.hours && shift.fullyBooked === false) {
-            console.log("todavia hay un empleado que puede trabajar")
-            counter++
-            boolean = true
-          } else {
-            console.log("no hay suficientes empleados")
-            boolean = false
-          }
-        })
+        if (emp.shiftsWorked !== null) {
+          emp.shiftsWorked.forEach((empShiftWorked) => {
+            if (empShiftWorked.shiftDay !== shift.day && emp.fullyBooked === false && empHpw >= shift.hours && shift.fullyBooked === false) {
+              console.log("todavia hay un empleado que puede trabajar")
+              counter++
+              boolean = true
+            } else {
+              console.log("no hay suficientes empleados")
+              boolean = false
+            }
+          })
+        }
+
       })
     })
     return boolean
@@ -317,47 +489,19 @@ export class CalendarComponent implements OnInit {
 
 
 
-    // DATA SETUP*************************************************
+  // DATA SETUP*************************************************
 
 
-    getEmployees(): any {
-      /* Regresamos una promesa que se resuelve hasta que tenemos los datos listos */
-      return new Promise((resolve, reject) => {
-        this.employeeService.getEmployees().subscribe((responseData) => {
-          resolve(responseData);
-        });
+  getEmployees(): any {
+    /* Regresamos una promesa que se resuelve hasta que tenemos los datos listos */
+    return new Promise((resolve, reject) => {
+      this.employeeService.getEmployees().subscribe((responseData) => {
+        resolve(responseData);
       });
-    }
-  
-  
-  
-  
-  
-    getAllWeeksInYear() {
-      let todaysYearsMonthsNumber = moment().isoWeeksInYear();
-      let todaysYear = moment().format('Y')
-      let test = moment('7', 'WWW').startOf('isoWeek')
-      let arrayDays = [];
-  
-      for (let i = 0; i < todaysYearsMonthsNumber; i++) {
-        arrayDays.push({ weekNumber: i + 1, daysInWeek: this.getAllDaysInWeek(i + 1), month: this.getAllDaysInWeek(i + 1)[0].month, year: todaysYear ,isGenerated: false, setupIsApplied: false })
-      }
-      return arrayDays
-    }
-  
-    getAllDaysInWeek(week) {
-      let startOfWeek = moment(`${week}`, 'WWW').startOf('isoWeek');
-      let endOfWeek = moment(`${week}`, 'WWW').endOf('isoWeek');
-  
-      let days = [];
-      let day = startOfWeek;
-  
-      while (day <= endOfWeek) {
-        days.push({ dayMoment: day, arrayOfShifts: [], dayName: day.format('dddd'), dayNumber: day.format('D'), month: day.format('MMMM'), dayYear: day.format('Y'), dayDate: day.format('L'), dayWeek: day.format('W') });
-        day = day.clone().add(1, 'd');
-      }
-      return days
-    }
+    });
+  }
+
+
 
 
 

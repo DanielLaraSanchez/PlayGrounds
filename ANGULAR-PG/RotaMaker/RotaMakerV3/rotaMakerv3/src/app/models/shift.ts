@@ -19,8 +19,8 @@ export class Shift {
     _id: String;
     workersRequired: number;
     hours: number;
-    timeStart: String;
-    timeFinish: String;
+    timeStart: string;
+    timeFinish: string;
     arrayOfWorkers: Employee[];
     day: String;
     fullyBooked: Boolean;

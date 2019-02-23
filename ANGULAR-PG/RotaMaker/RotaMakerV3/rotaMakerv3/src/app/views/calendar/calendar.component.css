@@ -19,13 +19,33 @@ html{
    
 }
 
-.row-header{
+.row-header-year{
     background-color: lightsteelblue ;
-    padding: 60px;
+    padding: 30px;
     -webkit-border-radius: 12px 12px 0px 0px;
     -moz-border-radius: 12px 12px 0px 0px; 
     border-radius: 12px 12px 0px 0px;
     color:white;
+}
+.row-header-month{
+    background-color: lightsteelblue ;
+    padding: 30px;
+
+    color:white;
+}
+
+.col-year-header{
+    margin-bottom: 30px;
+}
+.chevronYear{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.chevron{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
 }
 
 .row-days-setup{
@@ -35,7 +55,9 @@ html{
 
 }
 
-
+.h3-month{
+    text-align: center;
+}
 
 .div-days-setup{
     width:100px;

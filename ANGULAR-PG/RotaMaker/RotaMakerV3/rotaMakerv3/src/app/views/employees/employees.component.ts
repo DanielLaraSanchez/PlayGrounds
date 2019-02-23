@@ -17,7 +17,9 @@ export class EmployeesComponent implements OnInit {
   roles;
   name = 'World';
 
-  horas = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"]
+  // horas = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"]
+  horas = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+
   daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 
@@ -42,21 +44,21 @@ export class EmployeesComponent implements OnInit {
     newEmployee.position = form.value.position;
     newEmployee.hpw = form.value.hpw;
     newEmployee.hworked = 0;
-    newEmployee.aviability['monday'][0] = form.value.monday;
-    newEmployee.aviability['monday'][1] = form.value.mondayFinish;
-    newEmployee.aviability['tuesday'][0] = form.value.tuesday;
-    newEmployee.aviability['tuesday'][1] = form.value.tuesdayFinish;
-    newEmployee.aviability['wednesday'][0] = form.value.wednesday;
-    newEmployee.aviability['wednesday'][1] = form.value.wednesdayFinish;
-    newEmployee.aviability['thursday'][0] = form.value.thursday;
-    newEmployee.aviability['thursday'][1] = form.value.thursdayFinish;
-    newEmployee.aviability['friday'][0] = form.value.friday;
-    newEmployee.aviability['friday'][1] = form.value.fridayFinish;
-    newEmployee.aviability['saturday'][0] = form.value.saturday;
-    newEmployee.aviability['saturday'][1] = form.value.saturdayFinish;
-    newEmployee.aviability['sunday'][0] = form.value.sunday;
-    newEmployee.aviability['sunday'][1] = form.value.sundayFinish;
-
+    newEmployee.aviability['Monday'][0] = form.value.monday;
+    newEmployee.aviability['Monday'][1] = form.value.mondayFinish;
+    newEmployee.aviability['Tuesday'][0] = form.value.tuesday;
+    newEmployee.aviability['Tuesday'][1] = form.value.tuesdayFinish;
+    newEmployee.aviability['Wednesday'][0] = form.value.wednesday;
+    newEmployee.aviability['Wednesday'][1] = form.value.wednesdayFinish;
+    newEmployee.aviability['Thursday'][0] = form.value.thursday;
+    newEmployee.aviability['Thursday'][1] = form.value.thursdayFinish;
+    newEmployee.aviability['Friday'][0] = form.value.friday;
+    newEmployee.aviability['Friday'][1] = form.value.fridayFinish;
+    newEmployee.aviability['Saturday'][0] = form.value.saturday;
+    newEmployee.aviability['Saturday'][1] = form.value.saturdayFinish;
+    newEmployee.aviability['Sunday'][0] = form.value.sunday;
+    newEmployee.aviability['Sunday'][1] = form.value.sundayFinish;
+    console.log(newEmployee)
     if(!form.value._id){
 
       this._employeeService.createEmployee(newEmployee).subscribe((res) => {

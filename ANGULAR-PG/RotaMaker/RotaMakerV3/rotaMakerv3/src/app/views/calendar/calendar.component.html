@@ -42,9 +42,34 @@
        
         <div class="container-fluid container-calendar">
           
-          <div class="row justify-content-center row-header">
-            <h1 class="h1-year">2019</h1>
+          <div class="row justify-content-center row-header-year">
+            <div class="col-lg-12 text-center col-year-header">
+                
+                    
+
+                    <h1 class="h1-year"><i class="fas fa-chevron-left chevronYear"></i>{{year}}<i class="fas fa-chevron-right chevronYear"></i></h1>
+
+                
+
+            </div>
           </div>
+          <div class="row justify-content-center align-items-center row-header-month">
+            <div class="col-lg-1 text-center">
+               <i class="fas fa-chevron-left chevron" (click)="getPreviousMonth(daysInYear)"></i>
+              </div>
+              <div class="col-lg-2 text-center">
+                  <h3 class="h3-month text-center">{{month2}}</h3>
+              </div>
+              <div class="col-lg-1">
+                  <i class="fas fa-chevron-right chevron" (click)="getNextMonth(daysInYear)"></i>
+
+              </div>
+                
+
+            
+         
+          </div>
+      
   
           <div class="row justify-content-center align-items-center row-days-setup">
             <div class="div-days-setup" (click)="openModalForSetup(day.name)" *ngFor="let day of daysSetup" ><p class="p-centered">{{day.shortName}}</p></div>
@@ -54,7 +79,7 @@
 
           </div>
         
-          <div class="row row-days justify-content-center" *ngFor="let week of daysInYear">
+          <div class="row row-days justify-content-center" *ngFor="let week of daysInMonth">
             <div class="col-lg-1 div div-week-days">
               <div class="rotate">WEEK {{week.weekNumber}}</div>
             </div>

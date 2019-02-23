@@ -43,7 +43,15 @@ export class DaysetupComponent implements OnInit {
   }
 
  
+ deleteShift(shift) {
+   this._shiftsService.deleteShift(shift._id).subscribe((res) => {
+    this.shifts =  this.getShifts();
 
+  })
+
+  this.filterUnsavedShifts();
+
+}
 
      filterUnsavedShifts(){
       let shifts = this.shifts
