@@ -1,0 +1,1178 @@
+[
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7180e92c66386a59ee4a5c",
+    "name": "Linda",
+    "position": "Back Grill",
+    "hpw": 34,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "0",
+    "24"
+    ],
+    "Tuesday": [
+    "0",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "0",
+    "24"
+    ],
+    "Saturday": [
+    "0",
+    "24"
+    ],
+    "Sunday": [
+    "0",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7181132c66386a59ee4a5d",
+    "name": "Rochin",
+    "position": "Back Grill",
+    "hpw": 34,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "0",
+    "24"
+    ],
+    "Tuesday": [
+    "0",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "0",
+    "24"
+    ],
+    "Saturday": [
+    "0",
+    "24"
+    ],
+    "Sunday": [
+    "0",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7181692c66386a59ee4a5e",
+    "name": "Hanna",
+    "position": "Back Grill",
+    "hpw": 16,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    "0",
+    "24"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "0",
+    "24"
+    ],
+    "Saturday": [
+    "0",
+    "24"
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7181a92c66386a59ee4a5f",
+    "name": "Oscar",
+    "position": "Back Grill",
+    "hpw": 15,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    "0",
+    "24"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "0",
+    "24"
+    ],
+    "Saturday": [
+    "0",
+    "24"
+    ],
+    "Sunday": [
+    "0",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c71891c2c66386a59ee4a61",
+    "name": "Minto",
+    "position": "Back Grill",
+    "hpw": 30,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "0",
+    "24"
+    ],
+    "Tuesday": [
+    "0",
+    "22"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "0",
+    "24"
+    ],
+    "Saturday": [
+    "0",
+    "16"
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7189732c66386a59ee4a62",
+    "name": "Murray",
+    "position": "Back Grill",
+    "hpw": 16,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "15",
+    "24"
+    ],
+    "Wednesday": [
+    "0",
+    "23"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    "0",
+    "24"
+    ],
+    "Sunday": [
+    "0",
+    "22"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7189b42c66386a59ee4a63",
+    "name": "Elly D",
+    "position": "Back Grill",
+    "hpw": 20,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "11",
+    "21"
+    ],
+    "Tuesday": [
+    "11",
+    "21"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "11",
+    "21"
+    ],
+    "Saturday": [
+    "11",
+    "21"
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718a072c66386a59ee4a64",
+    "name": "Kezia",
+    "position": "Back Grill",
+    "hpw": 11,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "17",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    "18",
+    "23"
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    null,
+    null
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718a7b2c66386a59ee4a65",
+    "name": "Ross",
+    "position": "Back Grill",
+    "hpw": 23,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "0",
+    "24"
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    "0",
+    "24"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "0",
+    "24"
+    ],
+    "Saturday": [
+    null,
+    null
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718aba2c66386a59ee4a66",
+    "name": "Kate",
+    "position": "Cashier",
+    "hpw": 12,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    null,
+    null
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718aed2c66386a59ee4a67",
+    "name": "Martin",
+    "position": "Back Grill",
+    "hpw": 4,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    "12",
+    "16"
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718b332c66386a59ee4a68",
+    "name": "Chris",
+    "position": "Cashier",
+    "hpw": 35,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "12",
+    "24"
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    "12",
+    "24"
+    ],
+    "Thursday": [
+    "12",
+    "24"
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718b762c66386a59ee4a69",
+    "name": "Fiona",
+    "position": "Cashier",
+    "hpw": 19,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "16",
+    "24"
+    ],
+    "Wednesday": [
+    "16",
+    "24"
+    ],
+    "Thursday": [
+    "16",
+    "24"
+    ],
+    "Friday": [
+    "16",
+    "24"
+    ],
+    "Saturday": [
+    "16",
+    "22"
+    ],
+    "Sunday": [
+    "16",
+    "22"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718c932c66386a59ee4a6a",
+    "name": "Kara",
+    "position": "Cashier",
+    "hpw": 15,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    "12",
+    "24"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718d522c66386a59ee4a6c",
+    "name": "Ian",
+    "position": "Back Grill",
+    "hpw": 22,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    "12",
+    "22"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "16",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "22"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718dc92c66386a59ee4a6d",
+    "name": "Josh",
+    "position": "Back Grill",
+    "hpw": 15,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "12",
+    "24"
+    ],
+    "Tuesday": [
+    "15",
+    "24"
+    ],
+    "Wednesday": [
+    "12",
+    "24"
+    ],
+    "Thursday": [
+    "18",
+    "24"
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718e032c66386a59ee4a6e",
+    "name": "Kyle",
+    "position": "Cashier",
+    "hpw": 20,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "12",
+    "24"
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    "12",
+    "24"
+    ],
+    "Thursday": [
+    "12",
+    "24"
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718e322c66386a59ee4a6f",
+    "name": "Connor",
+    "position": "Cashier",
+    "hpw": 20,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    "12",
+    "24"
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718e752c66386a59ee4a70",
+    "name": "Louis",
+    "position": "Cashier",
+    "hpw": 18,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "18",
+    "24"
+    ],
+    "Saturday": [
+    "18",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718e952c66386a59ee4a71",
+    "name": "Madelain",
+    "position": "Cashier",
+    "hpw": 12,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718ed32c66386a59ee4a72",
+    "name": "Jack",
+    "position": "Cashier",
+    "hpw": 25,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "12",
+    "24"
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    "12",
+    "24"
+    ],
+    "Thursday": [
+    "12",
+    "24"
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718f202c66386a59ee4a73",
+    "name": "Melissa",
+    "position": "Cashier",
+    "hpw": 12,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "17",
+    "24"
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    "16",
+    "24"
+    ],
+    "Thursday": [
+    "18",
+    "24"
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "15",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718f4b2c66386a59ee4a74",
+    "name": "Lucy A",
+    "position": "Cashier",
+    "hpw": 20,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "12",
+    "24"
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "12",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718fb12c66386a59ee4a75",
+    "name": "Rachel",
+    "position": "Cashier",
+    "hpw": 16,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    null,
+    null
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    "13",
+    "21"
+    ],
+    "Saturday": [
+    "14",
+    "23"
+    ],
+    "Sunday": [
+    "14",
+    "23"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718fd52c66386a59ee4a76",
+    "name": "Patryc",
+    "position": "Cashier",
+    "hpw": 15,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "16",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    "16",
+    "24"
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    null,
+    null
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c718ff72c66386a59ee4a77",
+    "name": "Federica",
+    "position": "Cashier",
+    "hpw": 20,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    null,
+    null
+    ],
+    "Tuesday": [
+    "12",
+    "23"
+    ],
+    "Wednesday": [
+    "12",
+    "23"
+    ],
+    "Thursday": [
+    null,
+    null
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    "12",
+    "23"
+    ],
+    "Sunday": [
+    null,
+    null
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7190302c66386a59ee4a78",
+    "name": "Harry",
+    "position": "Cashier",
+    "hpw": 17,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "17",
+    "24"
+    ],
+    "Tuesday": [
+    "16",
+    "24"
+    ],
+    "Wednesday": [
+    "12",
+    "24"
+    ],
+    "Thursday": [
+    "12",
+    "24"
+    ],
+    "Friday": [
+    "16",
+    "24"
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    },
+    {
+    "shiftsWorked": [],
+    "colleagues": [],
+    "_id": "5c7190782c66386a59ee4a79",
+    "name": "Jody",
+    "position": "Back Grill",
+    "hpw": 17,
+    "salary": 0,
+    "fullyBooked": false,
+    "hworked": 0,
+    "aviability": {
+    "Monday": [
+    "15",
+    "12"
+    ],
+    "Tuesday": [
+    "12",
+    "24"
+    ],
+    "Wednesday": [
+    null,
+    null
+    ],
+    "Thursday": [
+    "12",
+    "24"
+    ],
+    "Friday": [
+    null,
+    null
+    ],
+    "Saturday": [
+    "12",
+    "24"
+    ],
+    "Sunday": [
+    "12",
+    "24"
+    ]
+    },
+    "__v": 0
+    }
+    ]

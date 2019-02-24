@@ -1,0 +1,92 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #shiftForm="ngForm" (ngSubmit)="addShift(shiftForm)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="shiftService.selectedShift._id">
+            <div class="row">
+                <div class="input-field col s5">
+                  <input type="text" name="hours" #hours="ngModel" [(ngModel)]="shiftService.selectedShift.hours" placeholder="hours">
+                  </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s5">
+                  <input type="text" name="workersRequired" #workersRequired="ngModel" [(ngModel)]="shiftService.selectedShift.workersRequired" placeholder="Workers Required">
+                  </div>
+                
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="input-field col s12">
+          <button class="btn right" (click)="saveForm(shiftForm)" style="margin-right: 5px;">Save</button>
+          <button class="btn right" (click)="resetForm(shiftForm)">Clean</button>
+
+        </div>
+      </div>
+
+    </div> -->
+
+
+
+  <!-- </div>
+
+</div>
+<div class="divider"></div>
+
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col s12 m4 zoom" *ngFor="let shift of shiftService.shifts" (click)="updateShift(shift)" style="margin-bottom:10px;">
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="https://lorempixel.com/100/190/nature/6">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>Hours: {{shift.hours}}</p>
+            <p>Workers Required: {{shift.workersRequired}}</p>
+          </div>
+          <div class="card-action">
+            <a (click)="deleteShift(shift._id)">delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- 
+<div *ngFor="let empl of unsavedEmployees"> {{empl.name}} hpw : {{empl.hpw}} hours worked: {{empl.hworked}}
+  <div *ngFor="let colleague of empl.colleagues"> {{colleague.name}}</div>
+<div *ngFor="let shift of empl.shiftsWorked">{{shift.shiftDay}}---hours{{shift.shifthours}}</div></div>
+
+<div><code>observable|async</code>: Time: {{ time | async }}</div>
+
+<div *ngFor="let shift of unsavedShifts">SHIFT : {{shift.day}}
+  <div *ngFor="let worker of shift.arrayOfWorkers">SHIFT ARRAYOF WORKERS: {{worker.name}}id-{{unsavedEmployees.indexOf(worker)}}</div>
+</div> -->
+
+
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th *ngFor="let shift of unsavedShifts">{{shift.day}}--{{shift.date.dayOfWeek}}</th>
+        <!-- <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td  *ngFor="let shift of unsavedShifts">
+          <p *ngFor="let employee of shift.arrayOfWorkers">{{employee.name}}</p>
+        </td>
+       
+      </tr>
+    
+     
+    </tbody>
+  </table>

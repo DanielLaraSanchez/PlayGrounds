@@ -1,0 +1,50 @@
+<form #shiftForm="ngForm">
+<input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="_shiftsService.selectedShift._id">
+
+  <div class="container container-main">
+    <div class="row justify-content-center align-items-center row-parent">
+      <div class="col-lg-12">
+          <div class="row justify-content-center row-input">
+              <div class="col-lg-3">
+                <input id="workersRequired" name="workersRequired" [(ngModel)]="_shiftsService.selectedShift.workersRequired" class="effect-1" type="text" placeholder="Workers Required">
+                <span class="focus-border"></span>
+              </div>
+            </div>
+    
+            <div class="row justify-content-center row-input row-select">
+                <div class="col-lg-3">
+                    <select  id="role" name="role" [(ngModel)]="_shiftsService.selectedShift.role" class="form-control">
+                        <option *ngFor="let role of roles">{{role.role}}</option>
+                      </select>
+                  <!-- <input id="role" name="role" [(ngModel)]="_shiftsService.selectedShift.role" class="effect-1" type="text" placeholder="What Role?"> -->
+                  <span class="focus-border"></span>
+                </div>
+              </div>
+        <div class="row justify-content-center align-items-center row-input">
+          <div class="col-lg-2">Start Time:</div>
+          <div class="col-lg-3">
+            <select  id="timeStart" name="timeStart" [(ngModel)]="_shiftsService.selectedShift.timeStart" class="form-control">
+              <option *ngFor="let hora of horas">{{hora}}</option>
+            </select>
+          </div>
+         
+        </div>
+        <div class="row justify-content-center align-items-center row-input">
+            <div class="col-lg-2">Finish Time:</div>
+          <div class="col-lg-3">
+            <select class="form-control" id="timeFinish" name="timeFinish" [(ngModel)]="_shiftsService.selectedShift.timeFinish" placeholder="finish time">
+              <option *ngFor="let hora of horas">{{hora}}</option>
+            </select>
+          </div>
+        
+        </div>
+
+        <button (click)="saveForm(shiftForm)" style="margin-right: 5px;"class="btn btn-primary">Save</button>
+        <button (click)="resetForm(shiftForm)" class="btn btn-primary">Reset Form</button>
+
+
+       
+      </div>
+    </div>
+  </div>
+</form>

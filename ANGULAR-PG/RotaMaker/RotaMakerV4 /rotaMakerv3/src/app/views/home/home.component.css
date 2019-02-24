@@ -1,0 +1,91 @@
+body{
+    background-color: #343a40;
+}
+html{
+    background-color: #343a40;
+}
+
+.container-whole-calendar{
+    margin-top: -120px;
+}
+
+.container-calendar{
+    width: 100%;
+    /* background-color: lightsteelblue; */
+    -webkit-border-radius: 12px 12px 0px 0px;
+    -moz-border-radius: 12px 12px 0px 0px; 
+    border-radius: 12px 12px 0px 0px;
+   
+}
+
+.row-header{
+    background-color: darkcyan ;
+    padding: 60px;
+    -webkit-border-radius: 12px 12px 0px 0px;
+    -moz-border-radius: 12px 12px 0px 0px; 
+    border-radius: 12px 12px 0px 0px;
+    color:white;
+}
+
+.row-days-setup{
+    background-color: white;
+    height: 100px;
+
+
+}
+
+
+
+.div-days-setup{
+    width:178px;
+    height: 100%;
+    line-height:100px;
+    text-align:center;
+
+    
+    
+}
+
+.div-days-setup:hover{
+    background-color: lightblue;
+  
+}
+
+.p-days-setup{
+    vertical-align: midle;
+    display: inline-block;
+    line-height:normal;
+}
+
+.row-days{
+    margin-bottom:5px;
+    background-color: lightsteelblue;
+
+}
+
+.div-week-days{
+    margin-left:-30px;
+    margin-top:40px;
+    border:1px solid lightblue;
+    position: absolute;
+    background-color:white !important;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(90deg);
+}
+
+
+.div-days{
+    width:178px;
+    height: 100px;
+    text-align:center;
+    padding:1rem;
+    border-right:1px solid lightgoldenrodyellow;
+    
+}
+
+.div-days:hover{
+    background-color:lightgoldenrodyellow;
+}
+
+
