@@ -35,8 +35,8 @@ export class EmployeesService {
     return this._http.post(this.URL_API, Employee)
   }
 
-  updateEmployee(employee: Employee){
-    return this._http.put(this.URL_API + `${employee._id}`, employee);
+  updateEmployee(employee: Employee, id){
+    return this._http.put(this.URL_API + `${id}`, employee);
   }
 
   deleteEmployee(id: String){

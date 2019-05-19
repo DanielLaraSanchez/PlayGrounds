@@ -20,6 +20,10 @@ app.use(cors({origin: 'http://localhost:4200'}));
 //routes
 app.use('/api/employees', require('./routes/employee.routes'));
 app.use('/api/shifts', require('./routes/shift.routes'));
+app.use('/api/weeks', require('./routes/week.routes'));
+app.use('/api/roles', require('./routes/role.routes'));
+
+
 
 
 

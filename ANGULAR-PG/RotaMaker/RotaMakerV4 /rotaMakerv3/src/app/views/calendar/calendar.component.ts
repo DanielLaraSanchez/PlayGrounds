@@ -38,16 +38,16 @@ export class CalendarComponent implements OnInit {
   daysSetup = [{ name: "Monday", shortName: "MON" }, { name: "Tuesday", shortName: "TUE" }, { name: "Wednesday", shortName: "WED" }, { name: "Thursday", shortName: "THU" }, { name: "Friday", shortName: "FRI" }, { name: "Saturday", shortName: "SAT" }, { name: "Sunday", shortName: "SUN" }]
   setupShifts = [];
   bsModalRef: BsModalRef;
-
+  newEmpObject = [];
 
   constructor(public calendarService: CalendarService, private modalService: BsModalService, public employeeService: EmployeesService, public shiftService: ShiftsService) {
   }
 
 
   async ngOnInit() {
-    this.unsavedEmployees = this.shuffle(await this.getEmployees());
+    this.unsavedEmployees = await this.getEmployees();
     console.log(this.unsavedEmployees)
-    this.setupShifts = await this.getShifts();
+    this.setupShifts = this.shuffle(await this.getShifts());
     console.log(this.setupShifts)
     this.date = moment();
     this.date2 = moment();
@@ -57,16 +57,111 @@ export class CalendarComponent implements OnInit {
 
     this.month2 = this.date2.format('MMMM')
     this.daysInYear = this.getAllWeeksInYear(this.date);
-    this.daysInMonth = this.getMonth(this.month, this.daysInYear)
-
-
-
-
+    this.daysInMonth = this.getMonth(this.month, this.daysInYear);
   }
 
 
 
-//CALENDAR+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  employeeObjectForDisplay(employees) {
+    let newArray = [];
+    let empShiftsObject;
+ 
+    employees.forEach((emp) => {
+      let empObject = { name: emp.name, hpw: emp.hpw, empShifts: [], hworked: emp.hworked }
+      empShiftsObject = {
+        Monday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null },
+        Tuesday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null },
+        Wednesday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null },
+        Thursday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null },
+        Friday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null },
+        Saturday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null },
+        Sunday: { shiftHours: null, shiftDay: null, shiftStart: null, shiftFinish: null }
+      }
+      emp.shiftsWorked.forEach((shiftEmp) => {
+        
+        console.log()
+
+        if(shiftEmp.shiftDay === "Monday"){
+          
+        }
+        if(shiftEmp.shiftDay === "Tuesday"){
+          
+        }
+        if(shiftEmp.shiftDay === "Wednesday"){
+          
+        }
+        if(shiftEmp.shiftDay === "Thursday"){
+          
+        }
+        if(shiftEmp.shiftDay === "Friday"){
+          
+        }
+        if(shiftEmp.shiftDay === "Saturday"){
+          
+        }
+        if(shiftEmp.shiftDay === "Sunday"){
+          
+        }
+        switch (shiftEmp.shiftDay){
+          case "Monday":
+          empShiftsObject.Monday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Monday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Monday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Monday.shiftFinish = shiftEmp.timeFinish;
+          break;
+          case "Tuesday":
+          empShiftsObject.Tuesday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Tuesday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Tuesday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Tuesday.shiftFinish = shiftEmp.timeFinish;
+          break;
+          
+          case "Wednesday":
+          empShiftsObject.Wednesday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Wednesday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Wednesday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Wednesday.shiftFinish = shiftEmp.timeFinish;
+          break;
+          case "Thursday":
+          empShiftsObject.Thursday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Thursday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Thursday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Thursday.shiftFinish = shiftEmp.timeFinish;
+          break;
+          case "Friday":
+          empShiftsObject.Friday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Friday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Friday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Friday.shiftFinish = shiftEmp.timeFinish;
+          break;
+          case "Saturday":
+          empShiftsObject.Saturday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Saturday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Saturday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Saturday.shiftFinish = shiftEmp.timeFinish;
+          break;
+          case "Sunday":
+          empShiftsObject.Sunday.shiftHours = shiftEmp.shifthours;
+          empShiftsObject.Sunday.shiftDay = shiftEmp.shiftDay;
+          empShiftsObject.Sunday.shiftStart = shiftEmp.timeStart;
+          empShiftsObject.Sunday.shiftFinish = shiftEmp.timeFinish;
+          break;
+        }
+
+
+      })
+
+      empObject.empShifts.push(empShiftsObject)
+      newArray.push(empObject)
+
+    })
+
+    this.newEmpObject = newArray;
+  }
+
+
+
+  //CALENDAR+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   getAllWeeksInYear(date) {
     let todaysYearsMonthsNumber = date.isoWeeksInYear();
@@ -116,17 +211,17 @@ export class CalendarComponent implements OnInit {
 
   }
 
-getPreviousMonth(arrayDays){
-  let prevMonth = this.date2.subtract(1, 'month').format('MMMM')
-  let result = arrayDays.filter((element) => {
-    return element.month === prevMonth
-  });
+  getPreviousMonth(arrayDays) {
+    let prevMonth = this.date2.subtract(1, 'month').format('MMMM')
+    let result = arrayDays.filter((element) => {
+      return element.month === prevMonth
+    });
 
-  console.log(result, "result")
-  this.month2 = prevMonth
-  this.daysInMonth = result;
+    console.log(result, "result")
+    this.month2 = prevMonth
+    this.daysInMonth = result;
 
-}
+  }
 
   // nextMonth(){
   //   this.date.add(1, 'M');
@@ -153,7 +248,7 @@ getPreviousMonth(arrayDays){
 
 
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
@@ -191,8 +286,99 @@ getPreviousMonth(arrayDays){
     // this.calendarService.createWeek(week).subscribe((res) => {
     //   console.log(res)
     // })
-    this.unsavedEmployees = await this.shuffle(this.getEmployees());
+    let counterEmployeeHours = [];
+    let counterShiftHours = 0;
+     this.emergencyCheckShift(this.unsavedEmployees, this.unsavedShifts)
+     this.emergencyCheckShift(this.unsavedEmployees, this.unsavedShifts)
+    this.checkWhatEmployeesAreNotFullyBooked(this.unsavedEmployees)
+    console.log(this.unsavedShifts);
+    console.log(this.unsavedEmployees);
+    const finalShifts = this.checkIfShiftsAreUncovered(this.unsavedShifts)
 
+    this.finalChecks(this.unsavedEmployees, finalShifts)
+    this.employeeObjectForDisplay(this.unsavedEmployees)
+    this.unsavedEmployees = await this.getEmployees();
+    this.unsavedShifts = this.shuffle(await this.getShifts())
+   
+  }
+
+  checkIfShiftsAreUncovered(shifts){
+    const result = shifts.filter((shift) => {
+      return shift.fullyBooked === false
+    })
+    console.log(result, "result2")
+    return result;
+  }
+
+  checkWhatEmployeesAreNotFullyBooked(employees){
+    const result = employees.filter((employee) => {
+      
+      return employee.fullyBooked === false
+    })
+    console.log(result, "result")
+  }
+
+  finalChecks(employees, shifts){
+    
+    let solution = [];
+    employees.forEach((emp) => {
+      let empHpw = emp.hpw - emp.hworked
+      let empObject = {name: emp.name, newShifts: []} 
+      shifts.forEach((shift) => {
+        let isworkingThisShift = this.isWorkinInThisShift(shift, emp);
+        let isWorkingToday = this.avoidEmployeToWorkSameDay(emp, shift)
+        
+        let shiftDay = shift.day.normalize()
+        let shiftTimeStart = Number(shift.timeStart)
+        let shiftTimeFinish = Number(shift.timeFinish)
+        let empAvStart = Number(emp.aviability[shiftDay]['0']);
+        let empAvFinish = Number(emp.aviability[shiftDay]['1']);
+        if((empHpw > shift.hours) && (emp.aviability[shiftDay]['0'] !== null) && (empAvStart <= shiftTimeStart) && (empAvFinish >= shiftTimeFinish) && (isworkingThisShift !== true) && (isWorkingToday !== true) && (shift.fullyBooked !== true)){
+          empObject.newShifts.push({emp: emp.name, shiftDay: shift.day, shiftHours: shift.hours, hpw: emp.hpw, hworked: emp.hworked})
+        }
+      })
+      solution.push(empObject)
+    })
+    console.log(solution, "solution")
+  }
+
+  emergencyPutEmp(shift, employees) {
+    employees.forEach((emp) => {
+      this.putShiftFullyBooked(shift);
+
+      let shiftDay = shift.day.normalize()
+      let shiftTimeStart = Number(shift.timeStart)
+      let shiftTimeFinish = Number(shift.timeFinish)
+
+      let empAvStart = Number(emp.aviability[shiftDay]['0']);
+      let empAvFinish = Number(emp.aviability[shiftDay]['1']);
+      let isworkingThisShift = this.isWorkinInThisShift(shift, emp);
+      let isWorkingToday = this.avoidEmployeToWorkSameDay(emp, shift)
+
+
+      let empHpw = emp.hpw - emp.hworked
+      if (emp.aviability[shiftDay]['0'] === null) {
+        return
+      }
+      if (emp.fullyBooked === true) {
+        return
+      }
+      if ((shift.fullyBooked !== true) && (empHpw >= shift.hours) && (empAvStart <= shiftTimeStart) && (empAvFinish >= shiftTimeFinish) && (isworkingThisShift !== true) && (isWorkingToday !== true)) {
+        emp.hworked += shift.hours
+        shift.arrayOfWorkers.push(emp)
+        emp.shiftsWorked.push({ shifthours: shift.hours, shiftDay: shift.day, timeStart: shift.timeStart, timeFinish: shift.timeFinish  })
+      }
+    })
+  }
+
+  emergencyCheckShift(employees, shifts) {
+    this.shuffle(shifts)
+
+    shifts.forEach((shift) => {
+      this.shuffle(shifts)
+
+      this.emergencyPutEmp(shift, employees)
+    })
   }
 
   putEmployeesInThisWeek(week) {
@@ -261,9 +447,10 @@ getPreviousMonth(arrayDays){
   }
 
   openViewRotaModal(week) {
+    
     const initialState = {
       data: [
-        week
+       week, this.newEmpObject
       ],
       title: 'Modal with component'
     };
@@ -271,15 +458,39 @@ getPreviousMonth(arrayDays){
     this.bsModalRef.content.closeBtnName = 'Close';
     console.log(week)
   }
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
   //put workers in shifts****************************************
   putEmployeesInShifts(shifts) {
+    this.shuffle(shifts)
     shifts.forEach((shift) => {
+      this.shuffle(shifts)
       this.putEmployeesInShift(shift)
     })
     shifts.forEach((shift) => {
+      this.shuffle(shifts)
+
+      this.putEmployeesInShift(shift)
+    })
+    shifts.forEach((shift) => {
+      this.shuffle(shifts)
+
+      this.putEmployeesInShift(shift)
+    })
+    shifts.forEach((shift) => {
+      this.shuffle(shifts)
+
+      this.putEmployeesInShiftLessRefined(shift)
+    });
+    shifts.forEach((shift) => {
+      this.shuffle(shifts)
+
+      this.putEmployeesInShiftLessRefined(shift)
+    });
+    shifts.forEach((shift) => {
+      this.shuffle(shifts)
+
       this.putEmployeesInShiftLessRefined(shift)
     });
     this.unsavedEmployees.forEach((employee) => {
@@ -293,9 +504,10 @@ getPreviousMonth(arrayDays){
 
 
   putEmployeesInShift(shift: Shift) {
-    // this.unsavedEmployees = await this.getEmployees()
     let employees = this.getAllWithLessHoursWorked(this.unsavedEmployees)
     employees.forEach((empl) => {
+      this.putShiftFullyBooked(shift);
+
       let shiftDay = shift.day.normalize()
       let empStart = empl.aviability[shiftDay].map((av) => av)
       const isWorkingToday = this.avoidEmployeToWorkSameDay(empl, shift)
@@ -303,21 +515,31 @@ getPreviousMonth(arrayDays){
       if ((empStart['0'] === null)) {
         return
       }
-      if ((isWorkingToday === false) &&
+      if ((shift.fullyBooked !== true) && (isWorkingToday === false) &&
         (empl.fullyBooked === false) &&
         (empl.hpw >= shift.hours) &&
-        (shift.workersRequired > shift.arrayOfWorkers.length) &&
+        (shift.workersRequired >= shift.arrayOfWorkers.length) &&
         (newHpw >= shift.hours) &&
         (!shift.arrayOfWorkers.includes(empl)) &&
-        (empl.position === shift.role)) {
+        (empl.position.includes(shift.role))) {
         this.actionOnEmployee(empl, shift);
       }
     });
   }
 
+  putShiftFullyBooked(shift: Shift) {
+    if (shift.arrayOfWorkers.length >= shift.workersRequired) {
+      shift.fullyBooked = true
+    }else{
+      shift.fullyBooked = false
+    }
+
+  }
+
   putEmployeesInShiftLessRefined(shift: Shift) {
-    // let employees = await this.getEmployees()
     this.unsavedEmployees.forEach((empl) => {
+      this.putShiftFullyBooked(shift)
+
       const isWorkingToday = this.avoidEmployeToWorkSameDay(empl, shift)
       let isworkingThisShift = this.isWorkinInThisShift(shift, empl);
 
@@ -326,7 +548,7 @@ getPreviousMonth(arrayDays){
       }
       this.putTrulyFullyBookedEmployees(empl);
       const newHpw = empl.hpw - empl.hworked;
-      if ((isWorkingToday === false && isworkingThisShift === false) && (empl.fullyBooked === false) && (empl.hpw >= shift.hours) && (shift.workersRequired > shift.arrayOfWorkers.length) && (newHpw >= shift.hours) && (!shift.arrayOfWorkers.includes(empl)) && (empl.position === shift.role)) {
+      if ((shift.fullyBooked !== true) && (isWorkingToday === false && isworkingThisShift === false) && (empl.fullyBooked !== true) && (empl.hpw >= shift.hours) && (shift.workersRequired > shift.arrayOfWorkers.length) && (newHpw >= shift.hours) && (!shift.arrayOfWorkers.includes(empl))) {
         this.actionOnEmployee(empl, shift);
       }
 
@@ -338,21 +560,14 @@ getPreviousMonth(arrayDays){
     let empAvStart = Number(employee.aviability[shiftDay]['0']);
     let empAvFinish = Number(employee.aviability[shiftDay]['1']);
     let isworkingThisShift = this.isWorkinInThisShift(shift, employee);
-    // let isWorkingToday = this.avoidEmployeToWorkSameDay(employee, shift)
-    // console.log(isWorkingToday, "isWorkingToday", employee, shift)
     if (employee.aviability[shiftDay]['0'] === null) {
       return
     }
     else if ((empAvStart <= shiftTimeStart) &&
       (empAvFinish >= Number(shift.timeFinish)) && (isworkingThisShift === false)) {
-      // console.log(employee, shift.arrayOfWorkers, isworkingToday , "employee arrOfworkers")
       employee.hworked += shift.hours
       shift.arrayOfWorkers.push(employee)
-      // employee.shiftsWorked.push({ shifthours: shift.hours, shiftId: this.unsavedShifts.indexOf(shift), shiftDay: shift.day })
-      employee.shiftsWorked.push({ shifthours: shift.hours, shiftDay: shift.day })
-
-      console.log("aqui", employee.shiftsWorked)
-
+      employee.shiftsWorked.push({ shifthours: shift.hours, shiftDay: shift.day, timeStart: shift.timeStart, timeFinish: shift.timeFinish })
     } else {
       console.log("nadie disponible este dia")
 
@@ -375,9 +590,7 @@ getPreviousMonth(arrayDays){
 
   avoidEmployeToWorkSameDay(emp, shift: Shift) {
     let bool = false
-    console.log(emp.shiftsWorked)
     emp.shiftsWorked.forEach((element) => {
-      console.log(emp, "emp")
       if (element.shiftDay === shift.day) {
         bool = true
       }
@@ -449,11 +662,9 @@ getPreviousMonth(arrayDays){
         if (emp.shiftsWorked !== null) {
           emp.shiftsWorked.forEach((empShiftWorked) => {
             if (empShiftWorked.shiftDay !== shift.day && emp.fullyBooked === false && empHpw >= shift.hours && shift.fullyBooked === false) {
-              console.log("todavia hay un empleado que puede trabajar")
               counter++
               boolean = true
             } else {
-              console.log("no hay suficientes empleados")
               boolean = false
             }
           })

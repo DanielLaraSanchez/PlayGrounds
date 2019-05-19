@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms'
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+
+
  
 import { ToastrModule } from 'ngx-toastr';
 
@@ -57,6 +60,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgbModule,
+    MultiselectDropdownModule,
     //Material Design
     MatButtonModule,
     MatCheckboxModule

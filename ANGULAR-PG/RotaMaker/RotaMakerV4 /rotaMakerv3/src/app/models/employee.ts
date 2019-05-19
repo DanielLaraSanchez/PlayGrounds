@@ -4,7 +4,7 @@ export class Employee {
 
 
 
-    constructor(_id = '', name = '', position = '',  hpw = 0, salary = 0, fullyBooked = false, shiftsWorked = [], colleagues = [], hworked = 0, aviability = {Monday:[], Tuesday:[], Wednesday: [], Thursday: [], Friday: [], Saturday: [], Sunday: []}){ 
+    constructor(_id = '', name = '', position = [],  hpw = 0, salary = 0, fullyBooked = false, shiftsWorked = [], colleagues = [], hworked = 0, aviability = {Monday:[], Tuesday:[], Wednesday: [], Thursday: [], Friday: [], Saturday: [], Sunday: []}){ 
         this._id = _id;
         this.name = name;
         this.position = position;
@@ -23,7 +23,7 @@ export class Employee {
 
     _id: String;
     name: String;
-    position: String;
+    position: Array<any>;
     hpw: number;
     salary: Number;
     fullyBooked: boolean;

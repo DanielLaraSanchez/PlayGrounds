@@ -16,6 +16,8 @@ shiftController.createShift = async function(req, res){
     const shift = new Shift({
         workersRequired: req.body.workersRequired,
         hours: req.body.hours,
+        timeStart: req.body.timeStart,
+        timeFinish: req.body.timeFinish,
         arrayOfWorkers: req.body.arrayOfWorkers,
         day: req.body.day,
         fullyBooked: req.body.fullyBooked
@@ -39,14 +41,19 @@ shiftController.updateShift = async function(req, res){
     const shift = {
         workersRequired: req.body.workersRequired,
         hours: req.body.hours,
+        timeStart: req.body.timeStart,
+        timeFinish: req.body.timeFinish,
         arrayOfWorkers: req.body.arrayOfWorkers,
         day: req.body.day,
-        fullyBooked: req.body.fullyBooked
+        fullyBooked: req.body.fullyBooked,
+        role: req.body.role
     }
      await Shift.findByIdAndUpdate(req.params.id, {$set: shift}, {new:  true});
      res.json({
          status: 'Shift Updated'
      })
+
+     
 }
 
 module.exports = shiftController;

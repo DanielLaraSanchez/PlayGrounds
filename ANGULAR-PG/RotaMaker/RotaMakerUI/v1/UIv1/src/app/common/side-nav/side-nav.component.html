@@ -1,0 +1,25 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                 (closed)="events.push('close!')">
+
+                 <div class="container" id="container-links">
+                   <div class="row justify-content-center align-items-center" id="row-links">
+                    <ul>
+                    <li><a routerLink="" class="link"><i class="material-icons"></i>HOME</a></li>
+                    <li><a routerLink="employees" class="link">Employees</a></li>
+                    <li><a routerLink="calendar" class="link">Calendar</a></li>
+                    </ul>
+                  </div>
+                 </div>
+                
+                  
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+      <!-- <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p> -->
+      <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

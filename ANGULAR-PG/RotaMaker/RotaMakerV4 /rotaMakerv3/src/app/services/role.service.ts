@@ -23,6 +23,10 @@ export class RoleService {
     return this._http.get(this.URL_API);
   }
 
+  getRole(id){
+    return this._http.get(this.URL_API, id)
+  }
+
   createRole(role: Role){
     return this._http.post(this.URL_API, role)
   }

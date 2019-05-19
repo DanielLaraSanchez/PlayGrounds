@@ -51,6 +51,7 @@ deletetest(id1){
     newShift.arrayOfWorkers = [];
     newShift.day = this.data[0];
     newShift.role = form.value.role;
+    newShift.fullyBooked = false;
   
     console.log(newShift)
 
